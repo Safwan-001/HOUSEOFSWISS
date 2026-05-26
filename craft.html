@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Craftsmanship — HOUSE OF SWISS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=Raleway:wght@200;300;400&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --black:    #050505;
+      --deep:     #0b0b0d;
+      --charcoal: #111114;
+      --surface:  #16161a;
+      --border:   #252530;
+      --gold:     #c9a84c;
+      --gold-lt:  #e2c37a;
+      --gold-dk:  #8a6d2f;
+      --ivory:    #f0ead8;
+      --muted:    #7a7a85;
+      --white:    #ffffff;
+
+      --font-display: 'Cinzel', serif;
+      --font-serif:   'Cormorant Garamond', Georgia, serif;
+      --font-body:    'Raleway', sans-serif;
+
+      --ease-luxury: cubic-bezier(0.25, 0.1, 0.0, 1.0);
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--black);
+      color: var(--ivory);
+      font-family: var(--font-body);
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.5;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    .gold-rule {
+      display: block;
+      width: 48px; height: 1px;
+      background: var(--gold);
+      margin: 0 auto 2rem;
+    }
+    .gold-rule.left { margin-left: 0; }
+
+    .label {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.9s var(--ease-luxury), transform 0.9s var(--ease-luxury);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.15s; }
+    .reveal-delay-2 { transition-delay: 0.30s; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 1rem 4rem;
+      background: rgba(5,5,5,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      letter-spacing: 0.25em;
+      color: var(--ivory);
+    }
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex; gap: 2.5rem; list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.3s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+    .nav-cta {
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border: 1px solid var(--gold-dk);
+      color: var(--gold);
+      padding: 0.55rem 1.6rem;
+      transition: background 0.3s, color 0.3s;
+    }
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .page-header {
+      padding: 160px 4rem 80px;
+      text-align: center;
+      background: linear-gradient(180deg, var(--deep) 0%, var(--black) 100%);
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.5rem;
+      color: var(--ivory);
+    }
+
+    .page-subtitle {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 100px 4rem;
+      background: var(--black);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      margin-bottom: 1rem;
+      color: var(--ivory);
+    }
+
+    .craft-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 4rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      margin-bottom: 4rem;
+    }
+
+    .craft-item {
+      background: var(--deep);
+      border: 1px solid var(--border);
+      padding: 3rem;
+      transition: border-color 0.3s;
+    }
+
+    .craft-item:hover {
+      border-color: var(--gold-dk);
+    }
+
+    .craft-num {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      opacity: 0.3;
+    }
+
+    .craft-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      letter-spacing: 0.1em;
+      color: var(--ivory);
+      margin-bottom: 1rem;
+    }
+
+    .craft-text {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .process-section {
+      padding: 100px 4rem;
+      background: var(--deep);
+    }
+
+    .process-title {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 3rem;
+      color: var(--ivory);
+    }
+
+    .process-steps {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 3rem;
+      margin-bottom: 4rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .step:last-child {
+      border-bottom: none;
+    }
+
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .step-content h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      letter-spacing: 0.08em;
+      color: var(--ivory);
+      margin-bottom: 0.8rem;
+    }
+
+    .step-content p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .reviewers-section {
+      padding: 100px 4rem;
+      background: var(--black);
+    }
+
+    .reviewers-title {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+      color: var(--ivory);
+    }
+
+    .reviewers-subtitle {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--muted);
+      margin-bottom: 4rem;
+    }
+
+    .reviewers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .reviewer-card {
+      background: var(--deep);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .reviewer-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+    }
+
+    .reviewer-name {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .reviewer-title {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .reviewer-desc {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .reviewer-link {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: 1px solid var(--gold-dk);
+      color: var(--gold);
+      padding: 0.6rem 1.5rem;
+      transition: all 0.3s;
+    }
+
+    .reviewer-link:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    footer {
+      background: var(--deep);
+      border-top: 1px solid var(--border);
+      padding: 4rem 4rem 2rem;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: 0.2em;
+      color: var(--ivory);
+      margin-bottom: 1rem;
+    }
+    .footer-brand span { color: var(--gold); }
+
+    .footer-tagline {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .footer-col-title {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+    .footer-links li { margin-bottom: 0.7rem; }
+    .footer-links a {
+      font-size: 0.85rem;
+      color: var(--muted);
+      transition: color 0.3s;
+    }
+    .footer-links a:hover { color: var(--ivory); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 2rem;
+    }
+    .footer-legal a {
+      font-size: 0.75rem;
+      color: var(--muted);
+      transition: color 0.3s;
+    }
+    .footer-legal a:hover { color: var(--ivory); }
+
+    @media (max-width: 768px) {
+      .page-title { font-size: 2.5rem; }
+      .section-title { font-size: 2rem; }
+      .craft-grid { grid-template-columns: 1fr; }
+      .step { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="mainNav">
+    <a href="index.html" class="nav-logo">HOUSE <span>OF</span> SWISS</a>
+    <ul class="nav-links">
+      <li><a href="collection.html">Collection</a></li>
+      <li><a href="maison.html">Maison</a></li>
+      <li><a href="craft.html" class="active">Craft</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Book Consultation</a>
+  </nav>
+
+  <div class="page-header">
+    <span class="label reveal">Horological Mastery</span>
+    <h1 class="page-title reveal reveal-delay-1">The Craft</h1>
+    <p class="page-subtitle reveal reveal-delay-2">
+      Where Swiss precision meets artistic vision. Every movement is a testament to centuries of watchmaking excellence.
+    </p>
+  </div>
+
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title reveal">The Art of Precision</h2>
+      <span class="gold-rule reveal reveal-delay-1"></span>
+    </div>
+
+    <div class="craft-grid">
+      <div class="craft-item reveal">
+        <div class="craft-num">01</div>
+        <span class="gold-rule left"></span>
+        <div class="craft-title">In-House Movements</div>
+        <p class="craft-text">Every calibre is designed, engineered and assembled within our Geneva atelier. From the hairspring to the escape wheel — no detail is delegated, no compromise accepted. Our movements represent the pinnacle of mechanical watchmaking, with specifications that exceed industry standards.</p>
+      </div>
+
+      <div class="craft-item reveal">
+        <div class="craft-num">02</div>
+        <span class="gold-rule left"></span>
+        <div class="craft-title">Geneva Seal Certified</div>
+        <p class="craft-text">The Poinçon de Genève is the most demanding hallmark in horology — awarded only after passing eleven strict criteria of finishing and functional excellence. Our watches undergo rigorous testing to ensure they meet this prestigious standard, a guarantee of quality that few brands achieve.</p>
+      </div>
+
+      <div class="craft-item reveal">
+        <div class="craft-num">03</div>
+        <span class="gold-rule left"></span>
+        <div class="craft-title">Hand-Finished Surfaces</div>
+        <p class="craft-text">Each bridge and plate undergoes weeks of finishing — anglage, perlage, côtes de Genève — invisible to the wearer, irreplaceable in character. Our master craftsmen employ techniques passed down through generations to create surfaces that are both functionally precise and aesthetically sublime.</p>
+      </div>
+
+      <div class="craft-item reveal">
+        <div class="craft-num">04</div>
+        <span class="gold-rule left"></span>
+        <div class="craft-title">Material Selection</div>
+        <p class="craft-text">We source only the finest materials: stainless steel, gold, platinum, and specialized alloys. Each material is selected for durability, aesthetic qualities, and horological properties. Our sapphire crystals and ceramic bezels represent the best available in the industry.</p>
+      </div>
+
+      <div class="craft-item reveal">
+        <div class="craft-num">05</div>
+        <span class="gold-rule left"></span>
+        <div class="craft-title">Movement Chronometer Testing</div>
+        <p class="craft-text">Every movement is independently tested and certified by COSC (Contrôle Officiel Suisse des Chronomètres). This rigorous testing ensures accuracy within strict parameters, guaranteeing that your watch keeps perfect time for generations to come.</p>
+      </div>
+
+      <div class="craft-item reveal">
+        <div class="craft-num">06</div>
+        <span class="gold-rule left"></span>
+        <div class="craft-title">Master Watchmakers</div>
+        <p class="craft-text">Our team comprises some of the world's finest watchmakers, trained through decades of apprenticeship and practical experience. Each craftsperson brings unparalleled expertise and an unwavering commitment to perfection in every timepiece they create.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="process-section">
+    <div class="section-header">
+      <h2 class="section-title reveal">The Manufacturing Process</h2>
+      <span class="gold-rule reveal reveal-delay-1"></span>
+    </div>
+
+    <div class="process-steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Design & Engineering</h3>
+          <p>Each watch begins as a concept, refined through our design atelier. Our engineers create CAD models with tolerances measured in microns. Every component is calculated for optimal performance, durability, and beauty.</p>
+        </div>
+      </div>
+
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Movement Development</h3>
+          <p>Our master calibre makers construct and adjust each movement by hand. This process takes weeks for complex complications. Adjustments are made to achieve perfect rate performance, ensuring chronometer-level accuracy from day one.</p>
+        </div>
+      </div>
+
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Case Manufacturing</h3>
+          <p>The watch case is precision-machined from solid metal blanks. Every edge is refined, every surface polished to perfection. Case hardness and water resistance are tested to exceed specifications, guaranteeing durability for decades.</p>
+        </div>
+      </div>
+
+      <div class="step reveal">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>Dial & Hand Finishing</h3>
+          <p>The dial undergoes specialized finishing treatments — sunburst, champagne, guillochage, or enamel work. Hour hands and minute hands are carefully shaped and finished to match the aesthetic vision. Every detail receives individual attention.</p>
+        </div>
+      </div>
+
+      <div class="step reveal">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h3>Assembly & Adjustment</h3>
+          <p>Components are assembled by experienced watchmakers in our sterile atelier. The movement is installed, regulation fine-tuned, and the watch is cased up. Each assembly takes hours of meticulous work to ensure perfect functionality.</p>
+        </div>
+      </div>
+
+      <div class="step reveal">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <h3>Quality Control & Testing</h3>
+          <p>Every finished watch undergoes rigorous quality control: pressure testing, timing verification, water resistance confirmation, and visual inspection. Only watches meeting our exacting standards leave the atelier bearing the House of Swiss name.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviewers-section">
+    <div class="section-header">
+      <h2 class="reviewers-title reveal">Recognized by Experts</h2>
+      <p class="reviewers-subtitle reveal reveal-delay-1">Discover what the world's most respected watch critics and enthusiasts say about House of Swiss timepieces</p>
+      <span class="gold-rule reveal reveal-delay-2"></span>
+    </div>
+
+    <div class="reviewers-grid">
+      <div class="reviewer-card reveal">
+        <div class="reviewer-name">Hodinkee</div>
+        <div class="reviewer-title">Premier Watch Publication</div>
+        <div class="reviewer-desc">Hodinkee's comprehensive reviews and industry insights have made it the go-to source for serious watch collectors and enthusiasts worldwide.</div>
+        <a href="https://www.hodinkee.com" target="_blank" class="reviewer-link">Visit Website</a>
+      </div>
+
+      <div class="reviewer-card reveal">
+        <div class="reviewer-name">WatchPro</div>
+        <div class="reviewer-title">International Watch Authority</div>
+        <div class="reviewer-desc">WatchPro delivers expert analysis, news, and reviews covering the full spectrum of the luxury watch industry and market trends.</div>
+        <a href="https://www.watchpro.com" target="_blank" class="reviewer-link">Visit Website</a>
+      </div>
+
+      <div class="reviewer-card reveal">
+        <div class="reviewer-name">Revolution Watch</div>
+        <div class="reviewer-title">Design & Craftsmanship Expert</div>
+        <div class="reviewer-desc">Revolution focuses on the artistry and engineering behind watchmaking, celebrating brands that push creative boundaries.</div>
+        <a href="https://www.revolution.watch" target="_blank" class="reviewer-link">Visit Website</a>
+      </div>
+
+      <div class="reviewer-card reveal">
+        <div class="reviewer-name">WatchESPN</div>
+        <div class="reviewer-title">Collector's Community</div>
+        <div class="reviewer-desc">WatchESPN aggregates reviews, news, and discussions from the global watch collecting community and industry experts.</div>
+        <a href="https://www.watchesbyespn.com" target="_blank" class="reviewer-link">Visit Website</a>
+      </div>
+
+      <div class="reviewer-card reveal">
+        <div class="reviewer-name">Worn & Wound</div>
+        <div class="reviewer-title">Independent Watch Review</div>
+        <div class="reviewer-desc">Worn & Wound provides in-depth, honest reviews and exploration of watches with particular emphasis on heritage and craftsmanship.</div>
+        <a href="https://www.wornandwound.com" target="_blank" class="reviewer-link">Visit Website</a>
+      </div>
+
+      <div class="reviewer-card reveal">
+        <div class="reviewer-name">Monochrome Watches</div>
+        <div class="reviewer-title">Technical & Aesthetic Analysis</div>
+        <div class="reviewer-desc">Monochrome combines stunning photography with technical expertise, celebrating the intersection of horology, design, and art.</div>
+        <a href="https://www.monochromewatches.com" target="_blank" class="reviewer-link">Visit Website</a>
+      </div>
+
+      <div class="reviewer-card reveal">
+        <div class="reviewer-name">Time & Tide Watches</div>
+        <div class="reviewer-title">Watch Review & Community</div>
+        <div class="reviewer-desc">Time & Tide magazine provides independent reviews and celebrates watch craftsmanship with a focus on independent brands.</div>
+        <a href="https://www.timeandtidewatches.com" target="_blank" class="reviewer-link">Visit Website</a>
+      </div>
+
+      <div class="reviewer-card reveal">
+        <div class="reviewer-name">Calibre 11</div>
+        <div class="reviewer-title">Vintage & Modern Watches</div>
+        <div class="reviewer-desc">Calibre 11 explores both vintage and contemporary timepieces, with a special focus on technical excellence and design innovation.</div>
+        <a href="https://calibre-11.com" target="_blank" class="reviewer-link">Visit Website</a>
+      </div>
+
+      <div class="reviewer-card reveal">
+        <div class="reviewer-name">Chronos Magazine</div>
+        <div class="reviewer-title">Global Watch Journal</div>
+        <div class="reviewer-desc">Chronos is the international authority on fine watchmaking, featuring in-depth articles, reviews, and interviews with master craftsmen.</div>
+        <a href="https://www.chronosmagazine.com" target="_blank" class="reviewer-link">Visit Website</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">HOUSE <span>OF</span> SWISS</div>
+        <p class="footer-tagline">Delivering Swiss Heritages since 2022. Every second, perfected.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Collection</div>
+        <ul class="footer-links">
+          <li><a href="collection.html">Full Collection</a></li>
+          <li><a href="collection.html">Segment A</a></li>
+          <li><a href="collection.html">Segment B</a></li>
+          <li><a href="collection.html">Segment C</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Maison</div>
+        <ul class="footer-links">
+          <li><a href="maison.html">Our Heritage</a></li>
+          <li><a href="maison.html">The Atelier</a></li>
+          <li><a href="craft.html">Craftsmanship</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="contact.html">Boutique Locations</a></li>
+          <li><a href="contact.html">Book Consultation</a></li>
+          <li><a href="contact.html">After-Sales Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 House of Swiss · Banani, Dhaka · All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Cookie Settings</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
