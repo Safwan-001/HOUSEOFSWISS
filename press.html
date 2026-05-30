@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Press & Media Kit — HOUSE OF SWISS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=Raleway:wght@200;300;400&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --black:    #050505;
+      --deep:     #0b0b0d;
+      --charcoal: #111114;
+      --surface:  #16161a;
+      --border:   #252530;
+      --gold:     #c9a84c;
+      --gold-lt:  #e2c37a;
+      --gold-dk:  #8a6d2f;
+      --ivory:    #f0ead8;
+      --muted:    #7a7a85;
+      --white:    #ffffff;
+
+      --font-display: 'Cinzel', serif;
+      --font-serif:   'Cormorant Garamond', Georgia, serif;
+      --font-body:    'Raleway', sans-serif;
+
+      --ease-luxury: cubic-bezier(0.25, 0.1, 0.0, 1.0);
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--black);
+      color: var(--ivory);
+      font-family: var(--font-body);
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.5;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 1rem 4rem;
+      background: rgba(5,5,5,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      letter-spacing: 0.25em;
+      color: var(--ivory);
+    }
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex; gap: 2.5rem; list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border: 1px solid var(--gold-dk);
+      color: var(--gold);
+      padding: 0.55rem 1.6rem;
+      transition: background 0.3s, color 0.3s;
+    }
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .page-header {
+      padding: 160px 4rem 80px;
+      text-align: center;
+      background: linear-gradient(180deg, var(--deep) 0%, var(--black) 100%);
+      margin-top: 60px;
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.5rem;
+      color: var(--ivory);
+    }
+
+    .page-subtitle {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .content-section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 80px 4rem;
+      background: var(--black);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 2rem;
+      margin-top: 3rem;
+    }
+
+    .section-title:first-child {
+      margin-top: 0;
+    }
+
+    .intro-text {
+      font-size: 0.95rem;
+      line-height: 1.9;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .intro-text strong {
+      color: var(--ivory);
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .media-card {
+      background: var(--deep);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .media-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .media-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      color: var(--ivory);
+      margin-bottom: 0.8rem;
+    }
+
+    .media-desc {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .download-link {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-dk);
+      padding: 0.6rem 1.5rem;
+      transition: all 0.3s;
+    }
+
+    .download-link:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .contact-box {
+      background: var(--charcoal);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      margin: 3rem 0;
+    }
+
+    .contact-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-info {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .contact-info strong {
+      color: var(--ivory);
+    }
+
+    .highlights {
+      background: var(--deep);
+      border-left: 3px solid var(--gold);
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+
+    .highlight-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .highlight-list {
+      margin-left: 1.5rem;
+    }
+
+    .highlight-list li {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    footer {
+      background: var(--deep);
+      border-top: 1px solid var(--border);
+      padding: 4rem 4rem 2rem;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: 0.2em;
+      color: var(--ivory);
+      margin-bottom: 1rem;
+    }
+    .footer-brand span { color: var(--gold); }
+
+    .footer-tagline {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .footer-col-title {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+    .footer-links li { margin-bottom: 0.7rem; }
+    .footer-links a {
+      font-size: 0.85rem;
+      color: var(--muted);
+      transition: color 0.3s;
+    }
+    .footer-links a:hover { color: var(--ivory); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 2rem;
+    }
+    .footer-legal a {
+      font-size: 0.75rem;
+      color: var(--muted);
+      transition: color 0.3s;
+    }
+    .footer-legal a:hover { color: var(--ivory); }
+
+    @media (max-width: 768px) {
+      .page-title { font-size: 2rem; }
+      .media-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .content-section { padding: 60px 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="mainNav">
+    <a href="index.html" class="nav-logo">HOUSE <span>OF</span> SWISS</a>
+    <ul class="nav-links">
+      <li><a href="collection.html">Collection</a></li>
+      <li><a href="maison.html">Maison</a></li>
+      <li><a href="craft.html">Craft</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Book Consultation</a>
+  </nav>
+
+  <div class="page-header">
+    <h1 class="page-title">Press & Media Kit</h1>
+    <p class="page-subtitle">Resources for journalists, media partners, and influencers</p>
+  </div>
+
+  <div class="content-section">
+    
+    <p class="intro-text">
+      Welcome to the House of Swiss Press Center. Here you'll find all the resources you need to cover our brand, products, and company story. Download high-resolution images, brand assets, press releases, and detailed company information.
+    </p>
+
+    <!-- MEDIA DOWNLOADS -->
+    <h2 class="section-title">Media Downloads</h2>
+
+    <div class="media-grid">
+      <div class="media-card">
+        <div class="media-icon">📸</div>
+        <h3 class="media-title">Product Photos</h3>
+        <p class="media-desc">High-resolution product images of our complete collection in multiple angles and formats.</p>
+        <a href="#" class="download-link">Download (ZIP - [SIZE])</a>
+      </div>
+
+      <div class="media-card">
+        <div class="media-icon">🏢</div>
+        <h3 class="media-title">Brand Assets</h3>
+        <p class="media-desc">Logo files, brand colors, typography, and design guidelines in various formats.</p>
+        <a href="#" class="download-link">Download (ZIP - [SIZE])</a>
+      </div>
+
+      <div class="media-card">
+        <div class="media-icon">📄</div>
+        <h3 class="media-title">Fact Sheets</h3>
+        <p class="media-desc">Company background, founder story, timeline, and key facts about House of Swiss.</p>
+        <a href="#" class="download-link">Download (PDF - [SIZE])</a>
+      </div>
+
+      <div class="media-card">
+        <div class="media-icon">📰</div>
+        <h3 class="media-title">Press Releases</h3>
+        <p class="media-desc">Official announcements, product launches, and company news in press release format.</p>
+        <a href="#" class="download-link">Download (ZIP - [SIZE])</a>
+      </div>
+
+      <div class="media-card">
+        <div class="media-icon">🎥</div>
+        <h3 class="media-title">Videos & B-Roll</h3>
+        <p class="media-desc">Atelier tours, craftsmanship videos, and product showcase footage for media use.</p>
+        <a href="#" class="download-link">Request Access</a>
+      </div>
+
+      <div class="media-card">
+        <div class="media-icon">🌐</div>
+        <h3 class="media-title">Web Graphics</h3>
+        <p class="media-desc">Banner ads, social media assets, and web-ready graphics in various dimensions.</p>
+        <a href="#" class="download-link">Download (ZIP - [SIZE])</a>
+      </div>
+    </div>
+
+    <!-- COMPANY INFORMATION -->
+    <h2 class="section-title">About House of Swiss</h2>
+
+    <div class="intro-text">
+      <strong>Company Overview:</strong> [Add comprehensive company description including founding, mission, values, and market position]
+    </div>
+
+    <div class="highlights">
+      <div class="highlight-title">Key Facts</div>
+      <ul class="highlight-list">
+        <li><strong>Founded:</strong> [Add founding year and details]</li>
+        <li><strong>Founder & CEO:</strong> [Add name and brief bio]</li>
+        <li><strong>Headquarters:</strong> [Add location]</li>
+        <li><strong>Collections:</strong> [Add number of collections and segments]</li>
+        <li><strong>Certifications:</strong> [Add relevant certifications]</li>
+        <li><strong>Team Size:</strong> [Add number of employees]</li>
+        <li><strong>International Presence:</strong> [Add countries/regions served]</li>
+      </ul>
+    </div>
+
+    <!-- PRODUCT INFORMATION -->
+    <h2 class="section-title">Product Information</h2>
+
+    <div class="intro-text">
+      <strong>Our Collections:</strong>
+    </div>
+
+    <div class="highlights">
+      <div class="highlight-title">Segment A - Essential Timepieces</div>
+      <ul class="highlight-list">
+        <li>[Add collection details]</li>
+        <li>[Add collection details]</li>
+        <li>[Add collection details]</li>
+      </ul>
+    </div>
+
+    <div class="highlights">
+      <div class="highlight-title">Segment B - Signature Pieces</div>
+      <ul class="highlight-list">
+        <li>[Add collection details]</li>
+        <li>[Add collection details]</li>
+        <li>[Add collection details]</li>
+      </ul>
+    </div>
+
+    <div class="highlights">
+      <div class="highlight-title">Segment C - Magnus Opus</div>
+      <ul class="highlight-list">
+        <li>[Add collection details]</li>
+        <li>[Add collection details]</li>
+        <li>[Add collection details]</li>
+      </ul>
+    </div>
+
+    <!-- MEDIA CONTACT -->
+    <div class="contact-box">
+      <h3 class="contact-title">Media Contact & Press Inquiries</h3>
+      <div class="contact-info">
+        <p style="margin-bottom: 1rem;">For press inquiries, interview requests, or media partnerships, please contact:</p>
+        <p>
+          <strong>Press Manager Name</strong><br/>
+          Email: press@houseofswiss.com<br/>
+          Phone: +880 1700-000000<br/>
+          Address: 45 Gulshan Avenue, Banani, Dhaka 1213, Bangladesh
+        </p>
+      </div>
+    </div>
+
+    <!-- ADDITIONAL RESOURCES -->
+    <h2 class="section-title">Additional Resources</h2>
+
+    <div class="intro-text">
+      <strong>Interview & Feature Opportunities:</strong>
+    </div>
+
+    <div class="highlights">
+      <div class="highlight-title">Available for</div>
+      <ul class="highlight-list">
+        <li>Founder & CEO interviews on luxury watchmaking and brand philosophy</li>
+        <li>Master craftsmen features discussing atelier life and techniques</li>
+        <li>Product launch coverage and exclusive previews</li>
+        <li>Documentary/video production about craftsmanship</li>
+        <li>Luxury lifestyle publications and watch-specific media</li>
+      </ul>
+    </div>
+
+    <!-- SOCIAL MEDIA -->
+    <h2 class="section-title">Social Media & Web</h2>
+
+    <div class="intro-text">
+      Connect with House of Swiss on social platforms and follow our latest announcements:
+    </div>
+
+    <div class="contact-info" style="font-size: 0.95rem; line-height: 1.9;">
+      <p>
+        <strong>Website:</strong> www.houseofswiss.com<br/>
+        <strong>Instagram:</strong> [@houseofswiss] ([FOLLOWER COUNT])<br/>
+        <strong>Facebook:</strong> [/houseofswiss] ([FOLLOWER COUNT])<br/>
+        <strong>LinkedIn:</strong> [/company/houseofswiss]<br/>
+        <strong>YouTube:</strong> [@houseofswiss] ([SUBSCRIBER COUNT])
+      </p>
+    </div>
+
+    <!-- EDITORIAL CALENDAR -->
+    <div class="contact-box" style="margin-top: 3rem;">
+      <h3 class="contact-title">Editorial Calendar & Story Ideas</h3>
+      <div class="contact-info">
+        <p>Interested in covering House of Swiss? Here are some potential story angles:</p>
+        <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+          <li style="margin-bottom: 0.8rem;">The rise of luxury watchmaking in South Asia</li>
+          <li style="margin-bottom: 0.8rem;">Behind-the-scenes: A day in our atelier</li>
+          <li style="margin-bottom: 0.8rem;">Craftsmanship meets innovation - our approach to traditional techniques</li>
+          <li style="margin-bottom: 0.8rem;">Meet the master watchmakers of House of Swiss</li>
+          <li style="margin-bottom: 0.8rem;">Investment pieces: The value of luxury timepieces</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">HOUSE <span>OF</span> SWISS</div>
+        <p class="footer-tagline">Delivering Swiss Heritages since 2022. Every second, perfected.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Collection</div>
+        <ul class="footer-links">
+          <li><a href="collection.html">Full Collection</a></li>
+          <li><a href="collection.html">Segment A</a></li>
+          <li><a href="collection.html">Segment B</a></li>
+          <li><a href="collection.html">Segment C</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Resources</div>
+        <ul class="footer-links">
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms & Conditions</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="warranty.html">Warranty & Care</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="contact.html">Boutique Locations</a></li>
+          <li><a href="contact.html">Book Consultation</a></li>
+          <li><a href="contact.html">After-Sales Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 House of Swiss · Banani, Dhaka · All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="#">Cookie Settings</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

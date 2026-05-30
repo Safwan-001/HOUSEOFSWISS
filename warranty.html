@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Warranty & Care Guide — HOUSE OF SWISS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=Raleway:wght@200;300;400&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --black:    #050505;
+      --deep:     #0b0b0d;
+      --charcoal: #111114;
+      --surface:  #16161a;
+      --border:   #252530;
+      --gold:     #c9a84c;
+      --gold-lt:  #e2c37a;
+      --gold-dk:  #8a6d2f;
+      --ivory:    #f0ead8;
+      --muted:    #7a7a85;
+      --white:    #ffffff;
+
+      --font-display: 'Cinzel', serif;
+      --font-serif:   'Cormorant Garamond', Georgia, serif;
+      --font-body:    'Raleway', sans-serif;
+
+      --ease-luxury: cubic-bezier(0.25, 0.1, 0.0, 1.0);
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--black);
+      color: var(--ivory);
+      font-family: var(--font-body);
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.5;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 1rem 4rem;
+      background: rgba(5,5,5,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      letter-spacing: 0.25em;
+      color: var(--ivory);
+    }
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex; gap: 2.5rem; list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border: 1px solid var(--gold-dk);
+      color: var(--gold);
+      padding: 0.55rem 1.6rem;
+      transition: background 0.3s, color 0.3s;
+    }
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .page-header {
+      padding: 160px 4rem 80px;
+      text-align: center;
+      background: linear-gradient(180deg, var(--deep) 0%, var(--black) 100%);
+      margin-top: 60px;
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.5rem;
+      color: var(--ivory);
+    }
+
+    .page-subtitle {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .content-section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 80px 4rem;
+      background: var(--black);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 2rem;
+      margin-top: 3rem;
+    }
+
+    .section-title:first-child {
+      margin-top: 0;
+    }
+
+    .guide-text {
+      font-size: 0.95rem;
+      line-height: 1.9;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .guide-text strong {
+      color: var(--ivory);
+    }
+
+    .subsection {
+      margin-bottom: 2.5rem;
+    }
+
+    .subsection-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      letter-spacing: 0.08em;
+      color: var(--ivory);
+      margin-bottom: 1rem;
+      margin-left: 0.5rem;
+    }
+
+    .highlight-box {
+      background: var(--deep);
+      border-left: 3px solid var(--gold);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 2px;
+    }
+
+    .highlight-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .guide-list {
+      margin-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .guide-list li {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .warranty-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .warranty-card {
+      background: var(--deep);
+      border: 1px solid var(--border);
+      padding: 2rem;
+    }
+
+    .warranty-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .warranty-text {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .dos-donts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .do-section, .dont-section {
+      background: var(--deep);
+      border: 1px solid var(--border);
+      padding: 2rem;
+    }
+
+    .do-section {
+      border-left: 3px solid var(--gold);
+    }
+
+    .dont-section {
+      border-left: 3px solid #c74444;
+    }
+
+    .do-title, .dont-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+    }
+
+    .do-title {
+      color: var(--gold);
+    }
+
+    .dont-title {
+      color: #c74444;
+    }
+
+    .maintenance-timeline {
+      background: var(--deep);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .timeline-period {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .timeline-content {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .service-cta {
+      background: var(--charcoal);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      text-align: center;
+      margin: 3rem 0;
+    }
+
+    .service-cta-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .service-cta-text {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      background: var(--gold);
+      color: var(--black);
+      padding: 0.9rem 2.5rem;
+      transition: background 0.3s;
+    }
+
+    .cta-button:hover {
+      background: var(--gold-lt);
+    }
+
+    footer {
+      background: var(--deep);
+      border-top: 1px solid var(--border);
+      padding: 4rem 4rem 2rem;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: 0.2em;
+      color: var(--ivory);
+      margin-bottom: 1rem;
+    }
+    .footer-brand span { color: var(--gold); }
+
+    .footer-tagline {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .footer-col-title {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+    .footer-links li { margin-bottom: 0.7rem; }
+    .footer-links a {
+      font-size: 0.85rem;
+      color: var(--muted);
+      transition: color 0.3s;
+    }
+    .footer-links a:hover { color: var(--ivory); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 2rem;
+    }
+    .footer-legal a {
+      font-size: 0.75rem;
+      color: var(--muted);
+      transition: color 0.3s;
+    }
+    .footer-legal a:hover { color: var(--ivory); }
+
+    @media (max-width: 768px) {
+      .page-title { font-size: 2rem; }
+      .warranty-grid { grid-template-columns: 1fr; }
+      .dos-donts { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 1fr; }
+      .content-section { padding: 60px 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="mainNav">
+    <a href="index.html" class="nav-logo">HOUSE <span>OF</span> SWISS</a>
+    <ul class="nav-links">
+      <li><a href="collection.html">Collection</a></li>
+      <li><a href="maison.html">Maison</a></li>
+      <li><a href="craft.html">Craft</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Book Consultation</a>
+  </nav>
+
+  <div class="page-header">
+    <h1 class="page-title">Warranty & Care Guide</h1>
+    <p class="page-subtitle">Ensure your timepiece remains perfect for generations to come</p>
+  </div>
+
+  <div class="content-section">
+    
+    <h2 class="section-title">Warranty Coverage</h2>
+    
+    <div class="warranty-grid">
+      <div class="warranty-card">
+        <div class="warranty-title">Standard Warranty</div>
+        <div class="warranty-text">
+          [Add information about standard warranty period, coverage details, and what is included]
+        </div>
+      </div>
+
+      <div class="warranty-card">
+        <div class="warranty-title">Extended Warranty</div>
+        <div class="warranty-text">
+          [Add information about extended warranty options, pricing, and coverage]
+        </div>
+      </div>
+
+      <div class="warranty-card">
+        <div class="warranty-title">What's Covered</div>
+        <div class="warranty-text">
+          [Add detailed list of items covered by warranty]
+        </div>
+      </div>
+
+      <div class="warranty-card">
+        <div class="warranty-title">What's Not Covered</div>
+        <div class="warranty-text">
+          [Add information about warranty exclusions and limitations]
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <div class="highlight-title">Warranty Registration</div>
+      <div class="guide-text">
+        [Add instructions for registering your warranty and accessing support]
+      </div>
+    </div>
+
+    <!-- DAILY CARE -->
+    <h2 class="section-title">Daily Care & Handling</h2>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Proper Handling</h3>
+      <ul class="guide-list">
+        <li>[Add handling recommendation 1]</li>
+        <li>[Add handling recommendation 2]</li>
+        <li>[Add handling recommendation 3]</li>
+        <li>[Add handling recommendation 4]</li>
+      </ul>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Cleaning Your Watch</h3>
+      <div class="guide-text">
+        [Add general cleaning instructions and frequency recommendations]
+      </div>
+      <ul class="guide-list">
+        <li>[Add cleaning step 1]</li>
+        <li>[Add cleaning step 2]</li>
+        <li>[Add cleaning step 3]</li>
+      </ul>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Storage</h3>
+      <div class="guide-text">
+        [Add proper storage instructions and environmental conditions]
+      </div>
+      <ul class="guide-list">
+        <li>[Add storage tip 1]</li>
+        <li>[Add storage tip 2]</li>
+        <li>[Add storage tip 3]</li>
+      </ul>
+    </div>
+
+    <!-- DOS AND DONTS -->
+    <h2 class="section-title">Do's & Don'ts</h2>
+
+    <div class="dos-donts">
+      <div class="do-section">
+        <div class="do-title">✓ Do</div>
+        <ul class="guide-list">
+          <li>[Add recommendation 1]</li>
+          <li>[Add recommendation 2]</li>
+          <li>[Add recommendation 3]</li>
+          <li>[Add recommendation 4]</li>
+          <li>[Add recommendation 5]</li>
+        </ul>
+      </div>
+
+      <div class="dont-section">
+        <div class="dont-title">✗ Don't</div>
+        <ul class="guide-list">
+          <li>[Add warning 1]</li>
+          <li>[Add warning 2]</li>
+          <li>[Add warning 3]</li>
+          <li>[Add warning 4]</li>
+          <li>[Add warning 5]</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MAINTENANCE SCHEDULE -->
+    <h2 class="section-title">Maintenance Schedule</h2>
+
+    <div class="maintenance-timeline">
+      <div class="timeline-item">
+        <div class="timeline-period">Weekly</div>
+        <div class="timeline-content">
+          [Add weekly maintenance tasks and checks]
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-period">Monthly</div>
+        <div class="timeline-content">
+          [Add monthly maintenance recommendations]
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-period">Annually</div>
+        <div class="timeline-content">
+          [Add annual maintenance and inspection recommendations]
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-period">Every 3-5 Years</div>
+        <div class="timeline-content">
+          [Add professional servicing recommendations and what's included]
+        </div>
+      </div>
+    </div>
+
+    <!-- SPECIAL CARE -->
+    <h2 class="section-title">Special Care for Materials</h2>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Gold & Platinum Cases</h3>
+      <div class="guide-text">
+        [Add specific care instructions for precious metal cases]
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Leather Straps</h3>
+      <div class="guide-text">
+        [Add specific care instructions for leather straps]
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Sapphire Crystal</h3>
+      <div class="guide-text">
+        [Add specific care instructions for crystal]
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Water Resistance</h3>
+      <div class="guide-text">
+        [Add information about water resistance ratings and proper handling]
+      </div>
+    </div>
+
+    <!-- WHEN TO SERVICE -->
+    <h2 class="section-title">When to Service Your Watch</h2>
+
+    <div class="highlight-box">
+      <div class="highlight-title">Signs Your Watch Needs Service</div>
+      <ul class="guide-list">
+        <li>[Add warning sign 1]</li>
+        <li>[Add warning sign 2]</li>
+        <li>[Add warning sign 3]</li>
+        <li>[Add warning sign 4]</li>
+        <li>[Add warning sign 5]</li>
+      </ul>
+    </div>
+
+    <!-- SERVICE CTA -->
+    <div class="service-cta">
+      <div class="service-cta-title">Ready for Professional Service?</div>
+      <div class="service-cta-text">
+        Our master craftsmen are ready to maintain and restore your House of Swiss timepiece to its original glory. Schedule a service appointment today.
+      </div>
+      <a href="contact.html" class="cta-button">Book Service Appointment</a>
+    </div>
+
+    <!-- ADDITIONAL RESOURCES -->
+    <h2 class="section-title">Additional Resources</h2>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Documentation</h3>
+      <ul class="guide-list">
+        <li><strong>Certificate of Authenticity:</strong> [Add download link and info]</li>
+        <li><strong>Warranty Card:</strong> [Add download link and info]</li>
+        <li><strong>User Manual:</strong> [Add download link and info]</li>
+        <li><strong>Service History:</strong> [Add information]</li>
+      </ul>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">Need Help?</h3>
+      <div class="guide-text">
+        For questions about care, maintenance, or warranty coverage, please contact our support team:
+      </div>
+      <div class="guide-text">
+        <strong>Email:</strong> support@houseofswiss.com<br/>
+        <strong>Phone:</strong> +880 1700-000000<br/>
+        <strong>Hours:</strong> Monday-Friday 10 AM - 6 PM (Dhaka Time)
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">HOUSE <span>OF</span> SWISS</div>
+        <p class="footer-tagline">Delivering Swiss Heritages since 2022. Every second, perfected.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Collection</div>
+        <ul class="footer-links">
+          <li><a href="collection.html">Full Collection</a></li>
+          <li><a href="collection.html">Segment A</a></li>
+          <li><a href="collection.html">Segment B</a></li>
+          <li><a href="collection.html">Segment C</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Resources</div>
+        <ul class="footer-links">
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms & Conditions</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="warranty.html">Warranty & Care</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="contact.html">Boutique Locations</a></li>
+          <li><a href="contact.html">Book Consultation</a></li>
+          <li><a href="contact.html">After-Sales Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 House of Swiss · Banani, Dhaka · All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="#">Cookie Settings</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
