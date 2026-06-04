@@ -104,11 +104,29 @@
       display: flex; align-items: center; justify-content: space-between;
       transition: background 0.5s ease, padding 0.4s ease;
     }
-    .nav-logo-img {
-  height: 32px;
+    .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1000;
+
+  /* optional glass effect */
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
+    .nav-logo img {
+height: 30px;   /* small logo */
   width: auto;
-  margin-right: 12px;
-  display: block;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+    .nav-logo img:hover {
+  transform: scale(1.05);
 }
     nav.scrolled {
       background: rgba(5,5,5,0.92);
@@ -747,6 +765,13 @@
     <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hoslogoofficial.jpg" alt="House of Swiss Logo" class="preloader-logo">
 </div>
 <body>
+  <nav class="navbar">
+
+  <a href="#" class="nav-logo">
+    <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hoslogoBGless.png" alt="House of Swiss">
+  </a>
+
+</nav>
   <section class="hero">
 
   <video autoplay muted loop playsinline class="hero-bg-video">
