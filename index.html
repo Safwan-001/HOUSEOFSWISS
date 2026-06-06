@@ -123,6 +123,38 @@
   background: rgba(0,0,0,0.2);
   backdrop-filter: blur(10px);
 }
+    /* HAMBURGER RIGHT */
+.menu-toggle {
+  font-size: 26px;
+  color: white;
+  cursor: pointer;
+}
+
+/* HIDDEN MENU */
+.menu {
+  position: fixed;
+  top: 60px;
+  right: 0;
+  width: 200px;
+
+  background: rgba(0,0,0,0.9);
+  display: none;
+  flex-direction: column;
+  padding: 20px;
+}
+
+/* MENU LINKS */
+.menu a {
+  color: white;
+  text-decoration: none;
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+/* SHOW MENU */
+.menu.show {
+  display: flex;
+}
     .nav-logo img {
 height: 60px;   /* small logo */
   width: auto;
@@ -794,15 +826,21 @@ height: 60px;   /* small logo */
        ║  NAVIGATION                          ║
        ╚══════════════════════════════════════╝ -->
   <nav id="mainNav">
-   
-    <ul class="nav-links">
-      <li><a href="collection.html">Collection</a></li>
-      <li><a href="maison.html">Maison</a></li>
-      <li><a href="craft.html">Craft</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
+    <div class="menu-toggle" onclick="toggleMenu()">
+    ☰
+  </div>
+     </nav>
+<ul class="nav-links">
+  <div class="menu" id="menu">
+  <a href="index.html">Home</a>
+  <a href="collection.html">Collection</a>
+  <a href="contact.html">Contact</a>
+    <li><a href="craft.html">Craft</a></li>
     <a href="contact.html" class="nav-cta">Book Consultation</a>
-  </nav>
+    </u1>
+</div>
+    
+ 
 
   <!-- ╔══════════════════════════════════════╗
        ║  HERO                                ║
@@ -1127,6 +1165,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 600);
     }, 1500);
 });
+</script>
+  <script>
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("show");
+}
 </script>
 
 </body>
