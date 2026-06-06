@@ -144,12 +144,14 @@
   position: fixed;
   top: 60px;
   right: 0;
-  width: 200px;
+  width: 220px;
 
-  background: rgba(0,0,0,0.9);
+  background: rgba(0,0,0,0.95);
   display: none;
   flex-direction: column;
   padding: 20px;
+  z-index: 9999;
+
 }
 
 /* MENU LINKS */
@@ -166,8 +168,9 @@
 
 /* SHOW MENU */
 .menu.show {
-  display: block;
+ display: flex;
 }
+    
     .nav-logo img {
 height: 60px;   /* small logo */
   width: auto;
@@ -819,7 +822,12 @@ height: 60px;   /* small logo */
   <li><a href="index.html" class="nav-logo">
     <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hoslogoBGless.png" alt="House of Swiss">
   </a></li>
-    </ul>
+    </ul
+       <div class="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 
 </nav>
   <section class="hero">
@@ -1182,6 +1190,11 @@ document.addEventListener("DOMContentLoaded", function () {
             preloader.style.display = "none";
         }, 600);
     }, 1500);
+});
+</script>
+  <script>
+window.addEventListener("load", function() {
+  document.getElementById("preloader").style.display = "none";
 });
 </script>
   <script>
