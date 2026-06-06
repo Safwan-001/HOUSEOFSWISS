@@ -125,9 +125,18 @@
 }
     /* HAMBURGER RIGHT */
 .menu-toggle {
-  font-size: 26px;
-  color: white;
+   width: 25px;
+  height: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   cursor: pointer;
+}
+
+    .menu-toggle span {
+  height: 3px;
+  background: white;
+  display: block;
 }
 
 /* HIDDEN MENU */
@@ -151,9 +160,13 @@
   font-size: 16px;
 }
 
+    .menu li {
+  margin: 10px 0;
+}
+
 /* SHOW MENU */
 .menu.show {
-  display: flex;
+  display: block;
 }
     .nav-logo img {
 height: 60px;   /* small logo */
@@ -827,16 +840,19 @@ height: 60px;   /* small logo */
        ╚══════════════════════════════════════╝ -->
   <nav id="mainNav">
     <div class="menu-toggle" onclick="toggleMenu()">
-    ☰
+        <span></span>
+    <span></span>
+    <span></span>
   </div>
      </nav>
-<ul class="nav-links">
-  <div class="menu" id="menu">
-  <a href="index.html">Home</a>
-  <a href="collection.html">Collection</a>
-  <a href="contact.html">Contact</a>
+
+  <u1 class="menu" id="menu">
+      <li><a href="index.html">Home</a></li>
+  <li><a href="collection.html">Collection</a></li>
+  <li><a href="contact.html">Contact</a></li>
     <li><a href="craft.html">Craft</a></li>
-    <a href="contact.html" class="nav-cta">Book Consultation</a>
+    
+    <li><a href="contact.html" class="nav-cta">Book Consultation</a></li>li
     </u1>
 </div>
     
