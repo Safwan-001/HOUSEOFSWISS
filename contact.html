@@ -93,10 +93,15 @@
 }
 
 /* LOGO */
-.logo img {
-  height: 40px;   /* 🔥 fixes oversize issue */
-  width: auto;
-  display: block;
+
+
+    .logo img {
+  height: 45px;
+  transition: all 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.08);
 }
     nav {
       position: fixed; top: 0; left: 0; right: 0;
