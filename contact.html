@@ -122,7 +122,15 @@
     .nav-logo span { color: var(--gold); }
 
     .nav-links {
-      display: flex; gap: 2.5rem; list-style: none;
+    
+      display: none;
+    flex-direction: column;
+    background: black;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 100%;
+    text-align: center;
     }
     .nav-links a {
       font-family: var(--font-display);
@@ -149,10 +157,17 @@
       color: var(--black);
     }
     .menu-toggle {
-  display: none;
+display: block;
   font-size: 24px;
   color: white;
   cursor: pointer;
+}
+    .menu-toggle span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background: white;
+  margin: 5px 0;
 }
 
     .page-header {
@@ -504,8 +519,10 @@
 
   <!-- Hamburger (Mobile) -->
   <div class="menu-toggle" onclick="toggleMenu()">
-    ☰
-  </div>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
 </nav>
 
 
@@ -829,7 +846,11 @@
       </div>
     </div>
   </footer>
-
+<script>
+function toggleMenu() {
+  document.querySelector('.nav-links').classList.toggle('active');
+}
+</script>
   <script>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
