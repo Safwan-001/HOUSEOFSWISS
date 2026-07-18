@@ -90,7 +90,7 @@
     .reveal-delay-2 { transition-delay: 0.30s; }
 
     /* ═══════════════════════════════════════════
-       NAVIGATION (clean single navbar)
+       NAVIGATION
     ═══════════════════════════════════════════ */
     .navbar {
       position: fixed;
@@ -164,130 +164,78 @@
     .menu.show {
       display: flex;
     }
-/* ── Background video ── */
-.header-bg-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;          /* Crops to fill perfectly */
-    z-index: 0;
-    opacity: 0.5;               /* Subtle luxury feel */
-    pointer-events: none;
-}
 
-/* ── Dark overlay ── */
-.header-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(5, 5, 5, 0.6);  /* Semi-transparent */
-    z-index: 1;
-    pointer-events: none;
-}
-
-/* ── Text content (sits on top) ── */
-.header-content {
-    position: relative;
-    z-index: 2;
-    max-width: 800px;
-    padding: 2rem;
-}
     /* ═══════════════════════════════════════════
-       PAGE HEADER
+       PAGE HEADER with Video
     ═══════════════════════════════════════════ */
     .page-header {
-    position: relative;
-    height: 100vh;              /* Full viewport height */
-    min-height: 700px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    overflow: hidden;
-    z-index: 2;
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    .header-bg-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .header-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(5, 5, 5, 0.6);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 2rem;
     }
 
     .page-header .label {
       margin-bottom: 1.5rem;
     }
 
-   .page-title {
-    font-family: var(--font-display);
-    font-size: 3.5rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    margin-bottom: 1.5rem;
-    color: var(--ivory);
-}
-
-.page-subtitle {
-    font-family: var(--font-serif);
-    font-size: 1.3rem;
-    font-weight: 300;
-    font-style: italic;
-    color: var(--muted);
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-    @media (max-width: 768px) {
-    .page-header {
-        min-height: 500px;
-        height: 80vh;
-    }
     .page-title {
-        font-size: 2.5rem;
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.5rem;
+      color: var(--ivory);
     }
+
     .page-subtitle {
-        font-size: 1rem;
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
     }
-          .segment-bg-video {
-        height: 100% !important;
-        width: 100% !important;
-        object-fit: cover !important;
-    }
-
-    /* The header inside each segment stays centered */
-    .segment-header {
-        margin-bottom: 40px;        /* Reduced spacing on mobile */
-    }
-
-    /* Watch grid adjusts naturally */
-  .watch-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-      @media (max-width: 992px) {
-  .watch-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .watch-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-}
-
-      .watch-img-wrap {
-  max-width: 200px;   /* Reduce from 260px to 200px */
-  margin: 0 auto 1.5rem;
-}
 
     /* ═══════════════════════════════════════════
-       SEGMENT SECTIONS with BACKGROUND VIDEO
+       SEGMENT SECTIONS
     ═══════════════════════════════════════════ */
     .segment-section {
       position: relative;
@@ -296,7 +244,6 @@
       z-index: 1;
     }
 
-    /* background video wrapper */
     .segment-bg-video {
       position: absolute;
       top: 0;
@@ -304,29 +251,27 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      z-index: -2;
-      opacity: 0.45;         /* subtle luxury overlay */
+      z-index: 0;
+      opacity: 0.45;
       pointer-events: none;
     }
 
-    /* dark overlay for readability */
     .segment-section::before {
       content: '';
       position: absolute;
       inset: 0;
       background: rgba(5, 5, 5, 0.7);
-      z-index: -1;
+      z-index: 1;
       pointer-events: none;
     }
 
-    /* different segment backgrounds slight variation */
     .segment-section:nth-of-type(odd)::before {
       background: rgba(8, 8, 12, 0.75);
     }
 
     .segment-header {
       text-align: center;
-      margin-bottom: 80px;
+      margin-bottom: 60px;
       position: relative;
       z-index: 2;
     }
@@ -357,93 +302,162 @@
     }
 
     /* ═══════════════════════════════════════════
-       WATCH GRID (cards remain unchanged)
+       WATCH GRID — 4 columns
     ═══════════════════════════════════════════ */
     .watch-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 3rem;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
       max-width: 1400px;
       margin: 0 auto;
       position: relative;
       z-index: 2;
     }
 
+    /* ─── Watch Link (makes entire card clickable) ─── */
+    .watch-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    .watch-link .watch-card {
+      transition: transform 0.4s ease, border-color 0.4s ease;
+    }
+
+    .watch-link:hover .watch-card {
+      transform: translateY(-6px);
+      border-color: var(--gold-dk);
+    }
+
+    /* ─── Watch Card ─── */
     .watch-card {
       background: rgba(11, 11, 13, 0.85);
       backdrop-filter: blur(2px);
       border: 1px solid var(--border);
-      padding: 2.5rem 2rem;
+      padding: 1.8rem 1.5rem;
       text-align: center;
       transition: border-color 0.4s, transform 0.4s, background 0.3s;
       position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .watch-card:hover {
       border-color: var(--gold-dk);
-      transform: translateY(-6px);
       background: rgba(11, 11, 13, 0.95);
     }
 
-    .watch-svg-wrap {
-      margin-bottom: 2rem;
-      display: flex;
-      justify-content: center;
+    .watch-img-wrap {
+      width: 100%;
+      max-width: 200px;
+      aspect-ratio: 1 / 1;
+      margin: 0 auto 1.2rem;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #0a0a0d;
+      border: 1px solid rgba(201, 168, 76, 0.12);
+      transition: border-color 0.3s ease;
+    }
+
+    .watch-card:hover .watch-img-wrap {
+      border-color: rgba(201, 168, 76, 0.4);
+    }
+
+    .watch-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s var(--ease-luxury);
+    }
+
+    .watch-card:hover .watch-img-wrap img {
+      transform: scale(1.05);
     }
 
     .watch-name {
       font-family: var(--font-display);
-      font-size: 0.95rem;
-      letter-spacing: 0.2em;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--ivory);
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+      min-height: 44px;
     }
 
     .watch-desc {
       font-family: var(--font-serif);
-      font-size: 0.95rem;
-      line-height: 1.6;
+      font-size: 0.85rem;
+      line-height: 1.5;
       color: var(--muted);
-      margin-bottom: 1.2rem;
-      min-height: 52px;
+      margin-bottom: 0.8rem;
+      min-height: 40px;
     }
 
     .watch-price {
       font-family: var(--font-display);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       letter-spacing: 0.18em;
       color: var(--gold);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
 
     .watch-tag {
       display: inline-block;
       font-family: var(--font-display);
-      font-size: 0.55rem;
-      letter-spacing: 0.25em;
+      font-size: 0.5rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       background: var(--gold-dk);
       color: var(--black);
-      padding: 0.4rem 1rem;
+      padding: 0.3rem 0.8rem;
     }
 
-    .btn-primary {
-      display: inline-block;
-      font-family: var(--font-display);
-      font-size: 0.7rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      background: var(--gold);
-      color: var(--black);
-      padding: 0.9rem 2.5rem;
-      transition: background 0.3s;
-      border: none;
-      cursor: pointer;
+    /* ─── SVG fallback ─── */
+    .watch-svg-wrap {
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: center;
     }
 
-    .btn-primary:hover {
-      background: var(--gold-lt);
+    /* ═══════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .watch-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar { padding: 0 1.5rem; }
+      .page-header { min-height: 500px; height: 80vh; }
+      .page-title { font-size: 2.5rem; }
+      .page-subtitle { font-size: 1rem; }
+      .segment-title { font-size: 2rem; }
+      .segment-section { padding: 60px 1.5rem; }
+      
+      .watch-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+      }
+      
+      .footer-top { grid-template-columns: 1fr; }
+      .menu { width: 100%; right: 0; top: 70px; }
+    }
+
+    @media (max-width: 480px) {
+      .watch-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .watch-img-wrap { max-width: 180px; }
     }
 
     /* ═══════════════════════════════════════════
@@ -505,6 +519,8 @@
       align-items: center;
       padding-top: 2rem;
       border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 1rem;
     }
 
     .footer-copy {
@@ -524,19 +540,14 @@
     .footer-legal a:hover { color: var(--ivory); }
 
     @media (max-width: 768px) {
-      .page-title { font-size: 2.5rem; }
-      .segment-title { font-size: 2rem; }
-      .watch-grid { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr; }
-      .navbar { padding: 0 1.5rem; }
-      .segment-section { padding: 80px 1.5rem; }
-      .page-header { padding: 140px 1.5rem 60px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
 
-  <!-- SINGLE NAVIGATION (mobile ready) -->
+  <!-- NAVIGATION -->
   <nav class="navbar" id="mainNav">
     <a href="index.html" class="nav-logo" aria-label="Homepage">
       <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hoslogoBGless.png" alt="House of Swiss - Home">
@@ -557,33 +568,26 @@
   </ul>
 
   <!-- ═══════════════════════════════════════════
-       PAGE HEADER
+       PAGE HEADER with Video
   ═══════════════════════════════════════════ -->
-   ═══════════════════════════════════════════ -->
-   <div class="page-header">
-    <!-- BACKGROUND VIDEO (edge-to-edge) -->
+  <div class="page-header">
     <video autoplay muted loop playsinline class="header-bg-video" crossorigin="anonymous">
-        <source src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hotlink-ok/new%20reelhq%20iwc.mp4" type="video/mp4">
+      <source src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hotlink-ok/new%20reelhq%20iwc.mp4" type="video/mp4">
     </video>
-    
-    <!-- DARK OVERLAY (so text is readable) -->
     <div class="header-overlay"></div>
-
-    <!-- TEXT CONTENT (sits on top) -->
     <div class="header-content">
-        <span class="label reveal">Horological Excellence</span>
-        <h1 class="page-title reveal reveal-delay-1">The Collection</h1>
-        <p class="page-subtitle reveal reveal-delay-2">
-            Three distinct categories, each embodying Swiss precision and timeless elegance
-        </p>
+      <span class="label reveal">Horological Excellence</span>
+      <h1 class="page-title reveal reveal-delay-1">The Collection</h1>
+      <p class="page-subtitle reveal reveal-delay-2">
+        Three distinct categories, each embodying Swiss precision and timeless elegance
+      </p>
     </div>
-</div>
+  </div>
 
   <!-- ═══════════════════════════════════════════
-       SEGMENT A — STARTER PIECES with background video
+       SEGMENT A
   ═══════════════════════════════════════════ -->
   <section class="segment-section" id="segment-a">
-    <!-- Background Video A -->
     <video autoplay muted loop playsinline class="segment-bg-video" crossorigin="anonymous">
       <source src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hospremiumwatchreel/datejustgoldjubileeebracelet.mp4" type="video/mp4">
     </video>
@@ -595,123 +599,141 @@
       <p class="segment-price reveal">BDT 5,000 — 8,000</p>
     </div>
 
-<div class="watch-grid">
-  <!-- 1 -->
-  <a href="watch-detail.html?id=AR60046" class="watch-link">
-  <div class="watch-card reveal">
-    <div class="watch-img-wrap">
-      <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hotlink-ok/Images/IMG-20260625-WA0252.jpg" alt="EMPORIO ARMANI Limited Edition" loading="lazy">
-    </div>
-    <div class="watch-name">EMPORIO ARMANI Ltd ed.</div>
-    <div class="watch-desc">Authentic, Automatic movement<br/>41mm steel case</div>
-    <div class="watch-price">BDT 17,500</div>
-    <span class="watch-tag">limited edition></span>
-  </div>
+    <div class="watch-grid">
+      <!-- 1 -->
+      <a href="watch-detail.html?id=AR60046" class="watch-link">
+        <div class="watch-card reveal">
+          <div class="watch-img-wrap">
+            <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hotlink-ok/Images/IMG-20260625-WA0252.jpg" alt="EMPORIO ARMANI Limited Edition" loading="lazy">
+          </div>
+          <div class="watch-name">EMPORIO ARMANI Ltd ed.</div>
+          <div class="watch-desc">Authentic, Automatic movement<br/>41mm steel case</div>
+          <div class="watch-price">BDT 17,500</div>
+          <span class="watch-tag">limited edition</span>
+        </div>
+      </a>
 
-  <!-- 2 -->
- 
-  <div class="watch-card reveal">
-    <div class="watch-img-wrap">
-      <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hotlink-ok/Images/IMG-20260625-WA0253.jpg" alt="Urbane Date" loading="lazy">
-    </div>
-    <div class="watch-name">IWC Schaffhausen Portugieser</div>
-    <div class="watch-desc">Master Grade<br/>Water resistant 50m<br/>Automatic movement<br/>Active complications</div>
-    <div class="watch-price">BDT 5,800</div>
-    <span class="watch-tag">Classic Pilot Watch></span>
-  </div>
+      <!-- 2 -->
+      <a href="watch-detail.html?id=iwc-portugieser" class="watch-link">
+        <div class="watch-card reveal">
+          <div class="watch-img-wrap">
+            <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hotlink-ok/Images/IMG-20260625-WA0253.jpg" alt="IWC Portugieser" loading="lazy">
+          </div>
+          <div class="watch-name">IWC Schaffhausen Portugieser</div>
+          <div class="watch-desc">Master Grade<br/>Automatic movement</div>
+          <div class="watch-price">BDT 5,800</div>
+          <span class="watch-tag">Classic Pilot</span>
+        </div>
+      </a>
 
-  <!-- 3 -->
-  <div class="watch-card reveal">
-    <div class="watch-img-wrap">
-      <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hotlink-ok/Images/IMG-20260625-WA0254.jpg" alt="Heritage Classic" loading="lazy">
-    </div>
-    <div class="watch-name">Crazy Hours by FRANCK MULLER</div>
-    <div class="watch-desc">Master Grade<br/></div>
-    <div class="watch-price">BDT 14,500</div>
-    <span class="watch-tag">CRAZY HOURS</span>span>
-  </div>
+      <!-- 3 -->
+      <a href="watch-detail.html?id=franck-muller-crazy" class="watch-link">
+        <div class="watch-card reveal">
+          <div class="watch-img-wrap">
+            <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hotlink-ok/Images/IMG-20260625-WA0254.jpg" alt="Crazy Hours" loading="lazy">
+          </div>
+          <div class="watch-name">Crazy Hours by FRANCK MULLER</div>
+          <div class="watch-desc">Master Grade</div>
+          <div class="watch-price">BDT 14,500</div>
+          <span class="watch-tag">CRAZY HOURS</span>
+        </div>
+      </a>
 
-  <!-- 4 -->
-  <div class="watch-card reveal">
-    <div class="watch-img-wrap">
-      <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hotlink-ok/Images/IMG-20260625-WA0255.jpg" alt="Sportive" loading="lazy">
-    </div>
-    <div class="watch-name">SUBMARINER by ROLEX</div>
-    <div class="watch-desc">Master Grade<br/>Durable bracelet</div>
-    <div class="watch-price">BDT 14,500</div>
-    <span class="watch-tag">Dive Watch</span>
-  </div>
+      <!-- 4 -->
+      <a href="watch-detail.html?id=rolex-submariner" class="watch-link">
+        <div class="watch-card reveal">
+          <div class="watch-img-wrap">
+            <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hotlink-ok/Images/IMG-20260625-WA0255.jpg" alt="Submariner" loading="lazy">
+          </div>
+          <div class="watch-name">SUBMARINER by ROLEX</div>
+          <div class="watch-desc">Master Grade<br/>Durable bracelet</div>
+          <div class="watch-price">BDT 14,500</div>
+          <span class="watch-tag">Dive Watch</span>
+        </div>
+      </a>
 
-  <!-- 5 -->
-  <div class="watch-card reveal">
-    <div class="watch-img-wrap">
-      <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hotlink-ok/Images/IMG-20260625-WA0256.jpg" alt="Diplomat" loading="lazy">
-    </div>
-    <div class="watch-name">IWC Schauffhausen classic</div>
-    <div class="watch-desc">Master Gradde<br/>Dress watch design</div>
-    <div class="watch-price">BDT 14,500</div>
-    <span class="watch-tag">Formal Prestige</span>
-  </div>
+      <!-- 5 -->
+      <a href="watch-detail.html?id=iwc-classic" class="watch-link">
+        <div class="watch-card reveal">
+          <div class="watch-img-wrap">
+            <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hotlink-ok/Images/IMG-20260625-WA0256.jpg" alt="IWC Classic" loading="lazy">
+          </div>
+          <div class="watch-name">IWC Schaffhausen Classic</div>
+          <div class="watch-desc">Master Grade<br/>Dress watch design</div>
+          <div class="watch-price">BDT 14,500</div>
+          <span class="watch-tag">Formal Prestige</span>
+        </div>
+      </a>
 
-  <!-- 6 -->
-  <div class="watch-card reveal">
-    <div class="watch-img-wrap">
-      <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hotlink-ok/Images/IMG-20260625-WA0257.jpg" alt="Navigator Date" loading="lazy">
-    </div>
-    <div class="watch-name">IWC Schaffhausen</div>
-    <div class="watch-desc">Roman numerals<br/>Scratch-resistant</div>
-    <div class="watch-price">BDT 7,000</div>
-    <span class="watch-tag">Timeless</span>
-  </div>
+      <!-- 6 -->
+      <a href="watch-detail.html?id=iwc-schaffhausen" class="watch-link">
+        <div class="watch-card reveal">
+          <div class="watch-img-wrap">
+            <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hotlink-ok/Images/IMG-20260625-WA0257.jpg" alt="IWC Schaffhausen" loading="lazy">
+          </div>
+          <div class="watch-name">IWC Schaffhausen</div>
+          <div class="watch-desc">Roman numerals<br/>Scratch-resistant</div>
+          <div class="watch-price">BDT 7,000</div>
+          <span class="watch-tag">Timeless</span>
+        </div>
+      </a>
 
-  <!-- 7 -->
-  <div class="watch-card reveal">
-    <div class="watch-img-wrap">
-      <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hotlink-ok/Images/IMG-20260625-WA0258.jpg" alt="Metropolitan" loading="lazy">
-    </div>
-    <div class="watch-name">Casion by FRANCK MULLER</div>
-    <div class="watch-desc">MASTER GRADE<br/></div>
-    <div class="watch-price">BDT 15,900</div>
-    <span class="watch-tag">casino</span>
-  </div>
+      <!-- 7 -->
+      <a href="watch-detail.html?id=franck-muller-casino" class="watch-link">
+        <div class="watch-card reveal">
+          <div class="watch-img-wrap">
+            <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hotlink-ok/Images/IMG-20260625-WA0258.jpg" alt="Casino" loading="lazy">
+          </div>
+          <div class="watch-name">Casino by FRANCK MULLER</div>
+          <div class="watch-desc">MASTER GRADE</div>
+          <div class="watch-price">BDT 15,900</div>
+          <span class="watch-tag">casino</span>
+        </div>
+      </a>
 
-  <!-- 8 -->
-  <div class="watch-card reveal">
-    <div class="watch-img-wrap">
-      <img src="https://picsum.photos/seed/prestige/300/300" alt="Prestige" loading="lazy">
-    </div>
-    <div class="watch-name">Prestige</div>
-    <div class="watch-desc">Refined dial<br/>Premium finish</div>
-    <div class="watch-price">BDT 7,500</div>
-    <span class="watch-tag">Distinguished</span>
-  </div>
+      <!-- 8 -->
+      <a href="watch-detail.html?id=prestige" class="watch-link">
+        <div class="watch-card reveal">
+          <div class="watch-img-wrap">
+            <img src="https://picsum.photos/seed/prestige/300/300" alt="Prestige" loading="lazy">
+          </div>
+          <div class="watch-name">Prestige</div>
+          <div class="watch-desc">Refined dial<br/>Premium finish</div>
+          <div class="watch-price">BDT 7,500</div>
+          <span class="watch-tag">Distinguished</span>
+        </div>
+      </a>
 
-  <!-- 9 -->
-  <div class="watch-card reveal">
-    <div class="watch-img-wrap">
-      <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hotlink-ok/Images/IMG-20260625-WA0250.jpg" alt="Gentleman" loading="lazy">
-    </div>
-    <div class="watch-name">PATEK PHILLIPE NAUTILUS SERIES</div>
-    <div class="watch-desc">Crocodile leather<br/>Classic dial</div>
-    <div class="watch-price">BDT 7,800</div>
-    <span class="watch-tag">Sophisticated</span>
-  </div>
+      <!-- 9 -->
+      <a href="watch-detail.html?id=patek-nautilus" class="watch-link">
+        <div class="watch-card reveal">
+          <div class="watch-img-wrap">
+            <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hotlink-ok/Images/IMG-20260625-WA0250.jpg" alt="Patek Philippe" loading="lazy">
+          </div>
+          <div class="watch-name">PATEK PHILIPPE NAUTILUS</div>
+          <div class="watch-desc">Crocodile leather<br/>Classic dial</div>
+          <div class="watch-price">BDT 7,800</div>
+          <span class="watch-tag">Sophisticated</span>
+        </div>
+      </a>
 
-  <!-- 10 -->
-  <div class="watch-card reveal">
-    <div class="watch-img-wrap">
-      <img src="https://picsum.photos/seed/elitedate/300/300" alt="Elite Date" loading="lazy">
+      <!-- 10 -->
+      <a href="watch-detail.html?id=elite-date" class="watch-link">
+        <div class="watch-card reveal">
+          <div class="watch-img-wrap">
+            <img src="https://picsum.photos/seed/elitedate/300/300" alt="Elite Date" loading="lazy">
+          </div>
+          <div class="watch-name">Elite Date</div>
+          <div class="watch-desc">Blue sunray dial<br/>Stainless steel</div>
+          <div class="watch-price">BDT 8,000</div>
+          <span class="watch-tag">Premium Entry</span>
+        </div>
+      </a>
     </div>
-    <div class="watch-name">Elite Date</div>
-    <div class="watch-desc">Blue sunray dial<br/>Stainless steel</div>
-    <div class="watch-price">BDT 8,000</div>
-    <span class="watch-tag">Premium Entry</span>
-  </div>
-</div>
   </section>
 
   <!-- ═══════════════════════════════════════════
-       SEGMENT B — SIGNATURE PIECES with background video
+       SEGMENT B
   ═══════════════════════════════════════════ -->
   <section class="segment-section" id="segment-b">
     <video autoplay muted loop playsinline class="segment-bg-video" crossorigin="anonymous">
@@ -724,16 +746,82 @@
       <p class="segment-price reveal">BDT 10,000 — 24,000</p>
     </div>
     <div class="watch-grid">
-      <!-- 10 watches segment B (preserved from original) -->
-      <div class="watch-card reveal"><div class="watch-svg-wrap"><svg viewBox="0 0 140 140" width="120" height="120" xmlns="http://www.w3.org/2000/svg" fill="none"><circle cx="70" cy="70" r="58" fill="url(#g1)" stroke="rgba(201,168,76,0.35)" stroke-width="1.5"/><circle cx="70" cy="70" r="50" fill="#0a0a0d"/><circle cx="70" cy="70" r="44" stroke="#1c1c22" stroke-width="0.8"/><g stroke="#c9a84c" stroke-width="1.2" opacity="0.6"><line x1="70" y1="18" x2="70" y2="26"/><line x1="70" y1="114" x2="70" y2="122"/><line x1="18" y1="70" x2="26" y2="70"/><line x1="114" y1="70" x2="122" y2="70"/><line x1="30" y1="30" x2="35.3" y2="35.3"/><line x1="104.7" y1="104.7" x2="110" y2="110"/><line x1="104.7" y1="35.3" x2="110" y2="30"/><line x1="30" y1="110" x2="35.3" y2="104.7"/></g><rect x="98" y="67" width="18" height="11" rx="1.5" fill="#111" stroke="#252530" stroke-width="0.9"/><text x="107" y="76" text-anchor="middle" font-family="serif" font-size="7" fill="#c9a84c">12</text><line x1="70" y1="70" x2="70" y2="32" stroke="#f0ead8" stroke-width="2.5" stroke-linecap="round"/><line x1="70" y1="70" x2="100" y2="82" stroke="#f0ead8" stroke-width="2" stroke-linecap="round"/><line x1="70" y1="70" x2="58" y2="48" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round"/><circle cx="70" cy="70" r="4.5" fill="#c9a84c"/><circle cx="70" cy="70" r="2" fill="#050505"/><defs><radialGradient id="g1" cx="50%" cy="30%" r="70%"><stop offset="0%" stop-color="#1a1a22"/><stop offset="100%" stop-color="#08080b"/></radialGradient></defs></svg></div><div class="watch-name">Master Chronometer</div><div class="watch-desc">COSC certified<br/>Anti-magnetic movement</div><div class="watch-price">BDT 10,500</div><span class="watch-tag">Signature</span></div>
-      <!-- For brevity, preserving all segment B cards exactly from original code. They remain identical but functional. -->
-      <div class="watch-card reveal"><div class="watch-svg-wrap"><svg viewBox="0 0 140 140" width="120" height="120" xmlns="http://www.w3.org/2000/svg" fill="none"><circle cx="70" cy="70" r="58" fill="url(#g2)" stroke="rgba(201,168,76,0.35)" stroke-width="1.5"/><circle cx="70" cy="70" r="50" fill="#0a0a0d"/><circle cx="70" cy="70" r="42" stroke="#1c1c22" stroke-width="0.8"/><g stroke="#c9a84c" stroke-width="1.2" opacity="0.55"><line x1="70" y1="19" x2="70" y2="27"/><line x1="70" y1="113" x2="70" y2="121"/><line x1="19" y1="70" x2="27" y2="70"/><line x1="113" y1="70" x2="121" y2="70"/></g><circle cx="70" cy="47" r="10" stroke="#252530" stroke-width="0.8" fill="#0c0c0f"/><circle cx="50" cy="80" r="8" stroke="#252530" stroke-width="0.8" fill="#0c0c0f"/><circle cx="90" cy="80" r="8" stroke="#252530" stroke-width="0.8" fill="#0c0c0f"/><line x1="70" y1="70" x2="70" y2="34" stroke="#f0ead8" stroke-width="2.4" stroke-linecap="round"/><line x1="70" y1="70" x2="98" y2="80" stroke="#f0ead8" stroke-width="2" stroke-linecap="round"/><line x1="70" y1="70" x2="60" y2="50" stroke="#c9a84c" stroke-width="1" stroke-linecap="round"/><circle cx="70" cy="70" r="4" fill="#c9a84c"/><defs><radialGradient id="g2" cx="50%" cy="30%" r="70%"><stop offset="0%" stop-color="#1c1c24"/><stop offset="100%" stop-color="#08080b"/></radialGradient></defs></svg></div><div class="watch-name">Chronograph Elite</div><div class="watch-desc">Triple sub-dials<br/>Column wheel mechanism</div><div class="watch-price">BDT 12,800</div><span class="watch-tag">Sport Elegance</span></div>
-      <!-- Additional watches (3-10) preserved in original file but condensed for readability, but full content exists in final code. -->
+      <!-- 1 -->
+      <div class="watch-card reveal">
+        <div class="watch-svg-wrap">
+          <svg viewBox="0 0 140 140" width="110" height="110" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <circle cx="70" cy="70" r="58" fill="url(#g1)" stroke="rgba(201,168,76,0.35)" stroke-width="1.5"/>
+            <circle cx="70" cy="70" r="50" fill="#0a0a0d"/>
+            <circle cx="70" cy="70" r="44" stroke="#1c1c22" stroke-width="0.8"/>
+            <g stroke="#c9a84c" stroke-width="1.2" opacity="0.6">
+              <line x1="70" y1="18" x2="70" y2="26"/>
+              <line x1="70" y1="114" x2="70" y2="122"/>
+              <line x1="18" y1="70" x2="26" y2="70"/>
+              <line x1="114" y1="70" x2="122" y2="70"/>
+              <line x1="30" y1="30" x2="35.3" y2="35.3"/>
+              <line x1="104.7" y1="104.7" x2="110" y2="110"/>
+              <line x1="104.7" y1="35.3" x2="110" y2="30"/>
+              <line x1="30" y1="110" x2="35.3" y2="104.7"/>
+            </g>
+            <rect x="98" y="67" width="18" height="11" rx="1.5" fill="#111" stroke="#252530" stroke-width="0.9"/>
+            <text x="107" y="76" text-anchor="middle" font-family="serif" font-size="7" fill="#c9a84c">12</text>
+            <line x1="70" y1="70" x2="70" y2="32" stroke="#f0ead8" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="70" y1="70" x2="100" y2="82" stroke="#f0ead8" stroke-width="2" stroke-linecap="round"/>
+            <line x1="70" y1="70" x2="58" y2="48" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="70" cy="70" r="4.5" fill="#c9a84c"/>
+            <circle cx="70" cy="70" r="2" fill="#050505"/>
+            <defs>
+              <radialGradient id="g1" cx="50%" cy="30%" r="70%">
+                <stop offset="0%" stop-color="#1a1a22"/>
+                <stop offset="100%" stop-color="#08080b"/>
+              </radialGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="watch-name">Master Chronometer</div>
+        <div class="watch-desc">COSC certified<br/>Anti-magnetic movement</div>
+        <div class="watch-price">BDT 10,500</div>
+        <span class="watch-tag">Signature</span>
+      </div>
+
+      <!-- 2 -->
+      <div class="watch-card reveal">
+        <div class="watch-svg-wrap">
+          <svg viewBox="0 0 140 140" width="110" height="110" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <circle cx="70" cy="70" r="58" fill="url(#g2)" stroke="rgba(201,168,76,0.35)" stroke-width="1.5"/>
+            <circle cx="70" cy="70" r="50" fill="#0a0a0d"/>
+            <circle cx="70" cy="70" r="42" stroke="#1c1c22" stroke-width="0.8"/>
+            <g stroke="#c9a84c" stroke-width="1.2" opacity="0.55">
+              <line x1="70" y1="19" x2="70" y2="27"/>
+              <line x1="70" y1="113" x2="70" y2="121"/>
+              <line x1="19" y1="70" x2="27" y2="70"/>
+              <line x1="113" y1="70" x2="121" y2="70"/>
+            </g>
+            <circle cx="70" cy="47" r="10" stroke="#252530" stroke-width="0.8" fill="#0c0c0f"/>
+            <circle cx="50" cy="80" r="8" stroke="#252530" stroke-width="0.8" fill="#0c0c0f"/>
+            <circle cx="90" cy="80" r="8" stroke="#252530" stroke-width="0.8" fill="#0c0c0f"/>
+            <line x1="70" y1="70" x2="70" y2="34" stroke="#f0ead8" stroke-width="2.4" stroke-linecap="round"/>
+            <line x1="70" y1="70" x2="98" y2="80" stroke="#f0ead8" stroke-width="2" stroke-linecap="round"/>
+            <line x1="70" y1="70" x2="60" y2="50" stroke="#c9a84c" stroke-width="1" stroke-linecap="round"/>
+            <circle cx="70" cy="70" r="4" fill="#c9a84c"/>
+            <defs>
+              <radialGradient id="g2" cx="50%" cy="30%" r="70%">
+                <stop offset="0%" stop-color="#1c1c24"/>
+                <stop offset="100%" stop-color="#08080b"/>
+              </radialGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="watch-name">Chronograph Elite</div>
+        <div class="watch-desc">Triple sub-dials<br/>Column wheel mechanism</div>
+        <div class="watch-price">BDT 12,800</div>
+        <span class="watch-tag">Sport Elegance</span>
+      </div>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════
-       SEGMENT C — SWISS / MAGNUS OPUS with background video
+       SEGMENT C
   ═══════════════════════════════════════════ -->
   <section class="segment-section" id="segment-c">
     <video autoplay muted loop playsinline class="segment-bg-video" crossorigin="anonymous">
@@ -746,8 +834,46 @@
       <p class="segment-price reveal">BDT 40,000 — 2,00,000</p>
     </div>
     <div class="watch-grid">
-      <!-- Segment C watch cards (preserved) -->
-      <div class="watch-card reveal"><div class="watch-svg-wrap"><svg viewBox="0 0 160 160" width="130" height="130" xmlns="http://www.w3.org/2000/svg" fill="none"><circle cx="80" cy="80" r="70" fill="url(#gs1)" stroke="rgba(201,168,76,0.45)" stroke-width="2"/><circle cx="80" cy="80" r="62" fill="#0a0a0d"/><circle cx="80" cy="80" r="54" stroke="#1c1c22" stroke-width="1"/><circle cx="80" cy="80" r="46" stroke="#1a1a20" stroke-width="0.8"/><g stroke="#c9a84c" stroke-width="1.5" opacity="0.7"><line x1="80" y1="16" x2="80" y2="26"/><line x1="80" y1="134" x2="80" y2="144"/><line x1="16" y1="80" x2="26" y2="80"/><line x1="134" y1="80" x2="144" y2="80"/><line x1="30" y1="30" x2="38" y2="38"/><line x1="122" y1="122" x2="130" y2="130"/><line x1="122" y1="38" x2="130" y2="30"/><line x1="30" y1="130" x2="38" y2="122"/></g><circle cx="80" cy="105" r="14" stroke="#c9a84c" stroke-width="0.9" opacity="0.5" fill="none"/><line x1="80" y1="91" x2="80" y2="97" stroke="#c9a84c" stroke-width="0.8" opacity="0.6"/><circle cx="80" cy="105" r="6" fill="#111" stroke="#252530" stroke-width="0.8"/><rect x="107" y="77" width="20" height="13" rx="2" fill="#111" stroke="#252530" stroke-width="1"/><text x="117" y="87.5" text-anchor="middle" font-family="serif" font-size="8" fill="#c9a84c">07</text><line x1="80" y1="80" x2="80" y2="36" stroke="#f0ead8" stroke-width="3" stroke-linecap="round"/><line x1="80" y1="80" x2="115" y2="92" stroke="#f0ead8" stroke-width="2.5" stroke-linecap="round"/><line x1="80" y1="80" x2="68" y2="56" stroke="#c9a84c" stroke-width="1.4" stroke-linecap="round"/><circle cx="80" cy="80" r="5.5" fill="#c9a84c"/><circle cx="80" cy="80" r="2.8" fill="#050505"/><defs><radialGradient id="gs1" cx="50%" cy="25%" r="75%"><stop offset="0%" stop-color="#22222a"/><stop offset="100%" stop-color="#08080b"/></radialGradient></defs></svg></div><div class="watch-name">Grand Tourbillon</div><div class="watch-desc">Flying tourbillon<br/>Platinum case, hand-finished</div><div class="watch-price">BDT 42,000</div><span class="watch-tag">Swiss Made</span></div>
+      <div class="watch-card reveal">
+        <div class="watch-svg-wrap">
+          <svg viewBox="0 0 160 160" width="120" height="120" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <circle cx="80" cy="80" r="70" fill="url(#gs1)" stroke="rgba(201,168,76,0.45)" stroke-width="2"/>
+            <circle cx="80" cy="80" r="62" fill="#0a0a0d"/>
+            <circle cx="80" cy="80" r="54" stroke="#1c1c22" stroke-width="1"/>
+            <circle cx="80" cy="80" r="46" stroke="#1a1a20" stroke-width="0.8"/>
+            <g stroke="#c9a84c" stroke-width="1.5" opacity="0.7">
+              <line x1="80" y1="16" x2="80" y2="26"/>
+              <line x1="80" y1="134" x2="80" y2="144"/>
+              <line x1="16" y1="80" x2="26" y2="80"/>
+              <line x1="134" y1="80" x2="144" y2="80"/>
+              <line x1="30" y1="30" x2="38" y2="38"/>
+              <line x1="122" y1="122" x2="130" y2="130"/>
+              <line x1="122" y1="38" x2="130" y2="30"/>
+              <line x1="30" y1="130" x2="38" y2="122"/>
+            </g>
+            <circle cx="80" cy="105" r="14" stroke="#c9a84c" stroke-width="0.9" opacity="0.5" fill="none"/>
+            <line x1="80" y1="91" x2="80" y2="97" stroke="#c9a84c" stroke-width="0.8" opacity="0.6"/>
+            <circle cx="80" cy="105" r="6" fill="#111" stroke="#252530" stroke-width="0.8"/>
+            <rect x="107" y="77" width="20" height="13" rx="2" fill="#111" stroke="#252530" stroke-width="1"/>
+            <text x="117" y="87.5" text-anchor="middle" font-family="serif" font-size="8" fill="#c9a84c">07</text>
+            <line x1="80" y1="80" x2="80" y2="36" stroke="#f0ead8" stroke-width="3" stroke-linecap="round"/>
+            <line x1="80" y1="80" x2="115" y2="92" stroke="#f0ead8" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="80" y1="80" x2="68" y2="56" stroke="#c9a84c" stroke-width="1.4" stroke-linecap="round"/>
+            <circle cx="80" cy="80" r="5.5" fill="#c9a84c"/>
+            <circle cx="80" cy="80" r="2.8" fill="#050505"/>
+            <defs>
+              <radialGradient id="gs1" cx="50%" cy="25%" r="75%">
+                <stop offset="0%" stop-color="#22222a"/>
+                <stop offset="100%" stop-color="#08080b"/>
+              </radialGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="watch-name">Grand Tourbillon</div>
+        <div class="watch-desc">Flying tourbillon<br/>Platinum case, hand-finished</div>
+        <div class="watch-price">BDT 42,000</div>
+        <span class="watch-tag">Swiss Made</span>
+      </div>
     </div>
   </section>
 
@@ -756,17 +882,47 @@
   ═══════════════════════════════════════════ -->
   <footer>
     <div class="footer-top">
-      <div><div class="footer-brand">HOUSE <span>OF</span> SWISS</div><p class="footer-tagline">Delivering Swiss Heritages since 2022. Every second, perfected.</p></div>
-      <div><div class="footer-col-title">Collection</div><ul class="footer-links"><li><a href="#segment-a">Segment A — Essential</a></li><li><a href="#segment-b">Segment B — Signature</a></li><li><a href="#segment-c">Segment C — Magnus Opus</a></li></ul></div>
-      <div><div class="footer-col-title">Maison</div><ul class="footer-links"><li><a href="maison.html">Our Heritage</a></li><li><a href="maison.html#atelier">The Atelier</a></li><li><a href="craft.html">Craftsmanship</a></li></ul></div>
-      <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="contact.html">Boutique Locations</a></li><li><a href="contact.html">Book Consultation</a></li><li><a href="contact.html">After-Sales Service</a></li></ul></div>
+      <div>
+        <div class="footer-brand">HOUSE <span>OF</span> SWISS</div>
+        <p class="footer-tagline">Delivering Swiss Heritages since 2022. Every second, perfected.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Collection</div>
+        <ul class="footer-links">
+          <li><a href="#segment-a">Segment A — Essential</a></li>
+          <li><a href="#segment-b">Segment B — Signature</a></li>
+          <li><a href="#segment-c">Segment C — Magnus Opus</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Maison</div>
+        <ul class="footer-links">
+          <li><a href="maison.html">Our Heritage</a></li>
+          <li><a href="maison.html#atelier">The Atelier</a></li>
+          <li><a href="craft.html">Craftsmanship</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="contact.html">Boutique Locations</a></li>
+          <li><a href="contact.html">Book Consultation</a></li>
+          <li><a href="contact.html">After-Sales Service</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-bottom"><p class="footer-copy">© 2026 House of Swiss · Banani, Dhaka · All rights reserved.</p><div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Cookie Settings</a></div></div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 House of Swiss · Banani, Dhaka · All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Cookie Settings</a>
+      </div>
+    </div>
   </footer>
 
   <script>
-    // Lazy-load videos when they enter viewport
-
+    // Reveal animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -777,6 +933,7 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
         const target = document.querySelector(a.getAttribute('href'));
@@ -787,11 +944,18 @@
       });
     });
 
+    // Mobile menu toggle
     window.toggleMobileMenu = function() {
       const menu = document.getElementById("mobileMenu");
       if(menu) menu.classList.toggle("show");
     };
+
+    // Close menu when clicking a link
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobileMenu')?.classList.remove('show');
+      });
+    });
   </script>
-  
 </body>
 </html>
