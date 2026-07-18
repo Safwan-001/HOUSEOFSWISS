@@ -800,51 +800,145 @@
     }
   ];
 
-  // ═══════════════════════════════════════════════════
-  // LOAD WATCH DATA FROM URL
-  // ═══════════════════════════════════════════════════
-  document.addEventListener('DOMContentLoaded', function() {
-    const params = new URLSearchParams(window.location.search);
-    const watchId = params.get('id');
+// ═══════════════════════════════════════════════════
+// GALLERY STATE
+// ═══════════════════════════════════════════════════
+let currentImageIndex = 0;
+let currentImages = [];
 
-    if (!watchId) {
-      // No ID – show error or redirect
-      document.getElementById('detailName').textContent = 'Watch not found';
-      return;
-    }
+// ═══════════════════════════════════════════════════
+// LOAD WATCH DATA FROM URL
+// ═══════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', function() {
+  const params = new URLSearchParams(window.location.search);
+  const watchId = params.get('id');
 
-    const watch = watches.find(w => w.id === watchId);
+  if (!watchId) {
+    document.getElementById('detailName').textContent = 'Watch not found';
+    return;
+  }
 
-    if (!watch) {
-      document.getElementById('detailName').textContent = 'Watch not found';
-      document.getElementById('detailDesc').textContent = 'The watch you are looking for does not exist.';
-      return;
-    }
+  const watch = watches.find(w => w.id === watchId);
 
-    // Populate the page
-    document.getElementById('detailImg').src = watch.image;
-    document.getElementById('detailImg').alt = watch.name;
-    document.getElementById('detailName').textContent = watch.name;
-    document.getElementById('detailTag').textContent = watch.tag;
-    document.getElementById('detailPrice').textContent = watch.price;
-    document.getElementById('detailDesc').textContent = watch.desc;
+  if (!watch) {
+    document.getElementById('detailName').textContent = 'Watch not found';
+    document.getElementById('detailDesc').textContent = 'The watch you are looking for does not exist.';
+    return;
+  }
 
-    // Populate specs
-    const specsContainer = document.getElementById('specsContainer');
-    specsContainer.innerHTML = '';
-    watch.specs.forEach(spec => {
-      const row = document.createElement('div');
-      row.className = 'spec-row';
-      row.innerHTML = `
-        <span class="spec-label">${spec.label}</span>
-        <span class="spec-value">${spec.value}</span>
-      `;
-      specsContainer.appendChild(row);
-    });
+  // ─── Store images ──────────────────────────────────
+  currentImages = watch.images || [watch.image || 'https://via.placeholder.com/600x600/111/555?text=No+Image'];
+  currentImageIndex = 0;
 
-    // Update page title
-    document.title = `${watch.name} — HOUSE OF SWISS`;
+  // ─── Populate the page ────────────────────────────
+  document.getElementById('detailName').textContent = watch.name;
+  document.getElementById('detailTag').textContent = watch.tag;
+  document.getElementById('detailPrice').textContent = watch.price;
+  document.getElementById('detailDesc').textContent = watch.desc;
+
+  // ─── Show first image ─────────────────────────────
+  updateGallery();
+
+  // ─── Populate specs ──────────────────────────────
+  const specsContainer = document.getElementById('specsContainer');
+  specsContainer.innerHTML = '';
+  watch.specs.forEach(spec => {
+    const row = document.createElement('div');
+    row.className = 'spec-row';
+    row.innerHTML = `
+      <span class="spec-label">${spec.label}</span>
+      <span class="spec-value">${spec.value}</span>
+    `;
+    specsContainer.appendChild(row);
   });
+
+  // ─── Update page title ────────────────────────────
+  document.title = `${watch.name} — HOUSE OF SWISS`;
+
+  // ─── Update arrows ────────────────────────────────
+  updateArrows();
+});
+
+// ═══════════════════════════════════════════════════
+// GALLERY FUNCTIONS
+// ═══════════════════════════════════════════════════
+function updateGallery() {
+  const img = document.getElementById('detailImg');
+  if (img && currentImages.length > 0) {
+    img.src = currentImages[currentImageIndex];
+    img.alt = document.getElementById('detailName').textContent;
+  }
+  updateDots();
+  updateArrows();
+}
+
+function updateDots() {
+  const dotsContainer = document.getElementById('thumbnailDots');
+  if (!dotsContainer) return;
+
+  dotsContainer.innerHTML = '';
+  
+  if (currentImages.length <= 1) {
+    dotsContainer.style.display = 'none';
+    return;
+  }
+
+  dotsContainer.style.display = 'flex';
+
+  currentImages.forEach((_, index) => {
+    const dot = document.createElement('button');
+    dot.className = `thumbnail-dot${index === currentImageIndex ? ' active' : ''}`;
+    dot.setAttribute('data-index', index);
+    dot.addEventListener('click', () => {
+      currentImageIndex = index;
+      updateGallery();
+    });
+    dotsContainer.appendChild(dot);
+  });
+}
+
+function updateArrows() {
+  const prevArrow = document.getElementById('prevArrow');
+  const nextArrow = document.getElementById('nextArrow');
+
+  if (!prevArrow || !nextArrow) return;
+
+  const hasMultiple = currentImages.length > 1;
+  
+  prevArrow.style.display = hasMultiple ? 'flex' : 'none';
+  nextArrow.style.display = hasMultiple ? 'flex' : 'none';
+  
+  prevArrow.disabled = currentImageIndex === 0;
+  nextArrow.disabled = currentImageIndex === currentImages.length - 1;
+}
+
+function prevImage() {
+  if (currentImageIndex > 0) {
+    currentImageIndex--;
+    updateGallery();
+  }
+}
+
+function nextImage() {
+  if (currentImageIndex < currentImages.length - 1) {
+    currentImageIndex++;
+    updateGallery();
+  }
+}
+
+// ═══════════════════════════════════════════════════
+// ATTACH EVENT LISTENERS
+// ═══════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('prevArrow')?.addEventListener('click', prevImage);
+  document.getElementById('nextArrow')?.addEventListener('click', nextImage);
+
+  // Keyboard support
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowLeft') prevImage();
+    if (e.key === 'ArrowRight') nextImage();
+  });
+
 </script>
 
 </body>
