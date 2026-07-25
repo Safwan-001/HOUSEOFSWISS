@@ -1,761 +1,1439 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HOUSE OF SWISS — Timeless Swiss Watchmaking</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=Raleway:wght@200;300;400&display=swap" rel="stylesheet"/>
-  <style>
-    /* ═══════════════════════════════════════════
-       TOKENS & RESET (same as before – keep full)
-    ═══════════════════════════════════════════ */
-    :root {
-      --black:    #050505;
-      --deep:     #0b0b0d;
-      --charcoal: #111114;
-      --surface:  #16161a;
-      --border:   #252530;
-      --gold:     #c9a84c;
-      --gold-lt:  #e2c37a;
-      --gold-dk:  #8a6d2f;
-      --ivory:    #f0ead8;
-      --muted:    #7a7a85;
-      --white:    #ffffff;
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HOUSE OF SWISS — Timeless Swiss Watchmaking</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=Raleway:wght@200;300;400&display=swap" rel="stylesheet" />
+    <style>
+        /* ═══════════════════════════════════════════
+           TOKENS & RESET
+        ═══════════════════════════════════════════ */
+        :root {
+            --black: #050505;
+            --deep: #0b0b0d;
+            --charcoal: #111114;
+            --surface: #16161a;
+            --border: #252530;
+            --gold: #c9a84c;
+            --gold-lt: #e2c37a;
+            --gold-dk: #8a6d2f;
+            --ivory: #f0ead8;
+            --muted: #7a7a85;
+            --white: #ffffff;
+            --font-display: 'Cinzel', serif;
+            --font-serif: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Raleway', sans-serif;
+            --ease-luxury: cubic-bezier(0.25, 0.1, 0.0, 1.0);
+        }
 
-      --font-display: 'Cinzel', serif;
-      --font-serif:   'Cormorant Garamond', Georgia, serif;
-      --font-body:    'Raleway', sans-serif;
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-      --ease-luxury: cubic-bezier(0.25, 0.1, 0.0, 1.0);
-      --dur-slow: 1.2s;
-      --dur-med:  0.7s;
-    }
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
 
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            background: var(--black);
+            color: var(--ivory);
+            font-family: var(--font-body);
+            font-weight: 300;
+            letter-spacing: 0.03em;
+            overflow-x: hidden;
+            cursor: default;
+            margin: 0;
+            padding-top: 0;
+        }
 
-    html { scroll-behavior: smooth; font-size: 16px; }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.5;
+        }
 
-    body {
-      background: var(--black);
-      color: var(--ivory);
-      font-family: var(--font-body);
-      font-weight: 300;
-      letter-spacing: 0.03em;
-      overflow-x: hidden;
-      cursor: default;
-      margin: 0;
-      padding-top: 0;
-    }
+        img {
+            display: block;
+            max-width: 100%;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-    /* ── Grain overlay ── */
-    body::before {
-      content: '';
-      position: fixed; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0.5;
-    }
+        /* ═══════════════════════════════════════════
+           UTILITY
+        ═══════════════════════════════════════════ */
+        .gold-rule {
+            display: block;
+            width: 48px;
+            height: 1px;
+            background: var(--gold);
+            margin: 0 auto 2rem;
+        }
+        .gold-rule.left {
+            margin-left: 0;
+        }
 
-    img { display: block; max-width: 100%; }
-    a   { text-decoration: none; color: inherit; }
+        .label {
+            font-family: var(--font-display);
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
 
-    /* ═══════════════════════════════════════════
-       UTILITY
-    ═══════════════════════════════════════════ */
-    .gold-rule {
-      display: block;
-      width: 48px; height: 1px;
-      background: var(--gold);
-      margin: 0 auto 2rem;
-    }
-    .gold-rule.left { margin-left: 0; }
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.9s var(--ease-luxury), transform 0.9s var(--ease-luxury);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 {
+            transition-delay: 0.15s;
+        }
+        .reveal-delay-2 {
+            transition-delay: 0.30s;
+        }
+        .reveal-delay-3 {
+            transition-delay: 0.45s;
+        }
+        .reveal-delay-4 {
+            transition-delay: 0.60s;
+        }
 
-    .label {
-      font-family: var(--font-display);
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
+        /* ═══════════════════════════════════════════
+           NAVIGATION
+        ═══════════════════════════════════════════ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 4rem;
+            z-index: 1100;
+            background: rgba(5, 5, 5, 0.65);
+            backdrop-filter: blur(14px);
+            transition: background 0.4s ease, padding 0.3s ease;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+        }
 
-    /* ── Reveal animation ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.9s var(--ease-luxury), transform 0.9s var(--ease-luxury);
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-delay-1 { transition-delay: 0.15s; }
-    .reveal-delay-2 { transition-delay: 0.30s; }
-    .reveal-delay-3 { transition-delay: 0.45s; }
-    .reveal-delay-4 { transition-delay: 0.60s; }
+        .navbar.scrolled {
+            background: rgba(5, 5, 5, 0.92);
+            backdrop-filter: blur(18px);
+            border-bottom-color: rgba(201, 168, 76, 0.3);
+            height: 70px;
+            padding: 0 3rem;
+        }
 
-    /* ═══════════════════════════════════════════
-       NAVIGATION (FIXED WITH SMALL LOGO)
-    ═══════════════════════════════════════════ */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 80px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 4rem;
-      z-index: 1100;
-      background: rgba(5,5,5,0.65);
-      backdrop-filter: blur(14px);
-      transition: background 0.4s ease, padding 0.3s ease;
-      border-bottom: 1px solid rgba(201,168,76,0.15);
-    }
-    
-    .navbar.scrolled {
-      background: rgba(5,5,5,0.92);
-      backdrop-filter: blur(18px);
-      border-bottom-color: rgba(201,168,76,0.3);
-      height: 70px;
-      padding: 0 3rem;
-    }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .nav-logo:hover {
+            transform: scale(1.02);
+        }
+        .nav-logo img {
+            height: 48px;
+            width: auto;
+            max-width: 150px;
+            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+            transition: filter 0.2s;
+        }
+        .nav-logo img:hover {
+            filter: drop-shadow(0 0 8px rgba(201, 168, 76, 0.5));
+        }
 
-    /* Logo link & image — small and clickable */
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-    .nav-logo:hover {
-      transform: scale(1.02);
-    }
-    .nav-logo img {
-      height: 48px;
-      width: auto;
-      max-width: 150px;
-      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
-      transition: filter 0.2s;
-    }
-    .nav-logo img:hover {
-      filter: drop-shadow(0 0 8px rgba(201,168,76,0.5));
-    }
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            z-index: 1120;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 28px;
+            height: 2px;
+            background: var(--ivory);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+        .menu-toggle:hover span {
+            background: var(--gold);
+        }
 
-    /* Hamburger (right) */
-    .menu-toggle {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 5px;
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
-      z-index: 1120;
-    }
-    .menu-toggle span {
-      display: block;
-      width: 28px;
-      height: 2px;
-      background: var(--ivory);
-      transition: all 0.3s ease;
-      border-radius: 2px;
-    }
-    .menu-toggle:hover span {
-      background: var(--gold);
-    }
+        .menu {
+            position: fixed;
+            top: 80px;
+            right: 0;
+            width: 280px;
+            background: rgba(10, 10, 12, 0.96);
+            backdrop-filter: blur(20px);
+            border-left: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 2rem 1.8rem;
+            z-index: 1050;
+            display: none;
+            flex-direction: column;
+            gap: 1.2rem;
+            list-style: none;
+            transition: 0.25s ease;
+        }
+        .menu.show {
+            display: flex;
+        }
+        .menu li {
+            margin: 0;
+            list-style: none;
+        }
+        .menu a {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--ivory);
+            padding: 0.6rem 0;
+            display: block;
+            transition: color 0.2s, letter-spacing 0.2s;
+            border-bottom: 1px solid transparent;
+        }
+        .menu a:hover {
+            color: var(--gold);
+            letter-spacing: 0.2em;
+            border-bottom-color: var(--gold-dk);
+        }
+        .menu .nav-cta {
+            border: 1px solid var(--gold-dk);
+            text-align: center;
+            margin-top: 0.5rem;
+            padding: 0.7rem 0;
+            background: transparent;
+            color: var(--gold);
+        }
+        .menu .nav-cta:hover {
+            background: var(--gold);
+            color: var(--black);
+            border-color: var(--gold);
+        }
 
-    /* Mobile menu panel */
-    .menu {
-      position: fixed;
-      top: 80px;
-      right: 0;
-      width: 280px;
-      background: rgba(10,10,12,0.96);
-      backdrop-filter: blur(20px);
-      border-left: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 2rem 1.8rem;
-      z-index: 1050;
-      display: none;
-      flex-direction: column;
-      gap: 1.2rem;
-      list-style: none;
-      transition: 0.25s ease;
-    }
-    .menu.show {
-      display: flex;
-    }
-    .menu li {
-      margin: 0;
-      list-style: none;
-    }
-    .menu a {
-      font-family: var(--font-display);
-      font-size: 0.9rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--ivory);
-      padding: 0.6rem 0;
-      display: block;
-      transition: color 0.2s, letter-spacing 0.2s;
-      border-bottom: 1px solid transparent;
-    }
-    .menu a:hover {
-      color: var(--gold);
-      letter-spacing: 0.2em;
-      border-bottom-color: var(--gold-dk);
-    }
-    .menu .nav-cta {
-      border: 1px solid var(--gold-dk);
-      text-align: center;
-      margin-top: 0.5rem;
-      padding: 0.7rem 0;
-      background: transparent;
-      color: var(--gold);
-    }
-    .menu .nav-cta:hover {
-      background: var(--gold);
-      color: var(--black);
-      border-color: var(--gold);
-    }
+        /* ═══════════════════════════════════════════
+           HERO
+        ═══════════════════════════════════════════ */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero-bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.55;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            margin-top: 8vh;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(5, 5, 5, 0.2) 40%, rgba(5, 5, 5, 1) 100%);
+            z-index: 1;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 700px;
+            height: 700px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(201, 168, 76, 0.12) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -55%);
+            pointer-events: none;
+        }
+        .hero-rings {
+            position: absolute;
+            width: 560px;
+            height: 560px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(201, 168, 76, 0.12);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .ring-1 {
+            width: 320px;
+            height: 320px;
+            animation: spin 80s linear infinite;
+        }
+        .ring-2 {
+            width: 420px;
+            height: 420px;
+            animation: spin 120s linear infinite reverse;
+            border-color: rgba(201, 168, 76, 0.07);
+        }
+        .ring-3 {
+            width: 520px;
+            height: 520px;
+            animation: spin 160s linear infinite;
+            border-color: rgba(201, 168, 76, 0.04);
+        }
+        @keyframes spin {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
 
-    /* HERO SECTION (clock removed) */
-    .hero {
-      position: relative;
-      height: 100vh; min-height: 700px;
-      display: flex; flex-direction: column;
-      justify-content: center; align-items: center;
-      text-align: center;
-      overflow: hidden;
-    }
-    .hero-bg-video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
-      opacity: 0.55;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      margin-top: 8vh;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(5,5,5,0.2) 40%, rgba(5,5,5,1) 100%);
-      z-index: 1;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      width: 700px; height: 700px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
-      top: 50%; left: 50%;
-      transform: translate(-50%, -55%);
-      pointer-events: none;
-    }
-    .hero-rings {
-      position: absolute;
-      width: 560px; height: 560px;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      z-index: 1;
-    }
-    .ring {
-      position: absolute; border-radius: 50%;
-      border: 1px solid rgba(201,168,76,0.12);
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    .ring-1 { width: 320px; height: 320px; animation: spin 80s linear infinite; }
-    .ring-2 { width: 420px; height: 420px; animation: spin 120s linear infinite reverse; border-color: rgba(201,168,76,0.07); }
-    .ring-3 { width: 520px; height: 520px; animation: spin 160s linear infinite; border-color: rgba(201,168,76,0.04); }
-    @keyframes spin { from { transform: translate(-50%,-50%) rotate(0deg); } to { transform: translate(-50%,-50%) rotate(360deg); } }
+        .hero-label {
+            font-family: var(--font-display);
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: 4.5rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            margin-bottom: 1.5rem;
+            color: var(--ivory);
+            line-height: 1.1;
+        }
+        .hero-subtitle {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: 300;
+            font-style: italic;
+            color: var(--gold-lt);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .hero-cta {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            background: var(--gold);
+            color: var(--black);
+            padding: 0.9rem 2.5rem;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .btn-primary:hover {
+            background: var(--gold-lt);
+        }
+        .btn-ghost {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            background: transparent;
+            color: var(--ivory);
+            border: 1px solid var(--ivory);
+            padding: 0.9rem 2.5rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .btn-ghost:hover {
+            background: var(--ivory);
+            color: var(--black);
+        }
 
-    .hero-label {
-      font-family: var(--font-display);
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-      display: block;
-    }
-    .hero-title {
-      font-family: var(--font-display);
-      font-size: 4.5rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      margin-bottom: 1.5rem;
-      color: var(--ivory);
-      line-height: 1.1;
-    }
-    .hero-subtitle {
-      font-family: var(--font-serif);
-      font-size: 1.4rem;
-      font-weight: 300;
-      font-style: italic;
-      color: var(--gold-lt);
-      margin-bottom: 2rem;
-      line-height: 1.6;
-    }
-    .hero-cta {
-      display: flex; gap: 2rem; justify-content: center;
-      flex-wrap: wrap;
-    }
-    .btn-primary {
-      font-family: var(--font-display);
-      font-size: 0.7rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      background: var(--gold);
-      color: var(--black);
-      padding: 0.9rem 2.5rem;
-      transition: background 0.3s;
-      border: none;
-      cursor: pointer;
-      display: inline-block;
-    }
-    .btn-primary:hover {
-      background: var(--gold-lt);
-    }
-    .btn-ghost {
-      font-family: var(--font-display);
-      font-size: 0.7rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      background: transparent;
-      color: var(--ivory);
-      border: 1px solid var(--ivory);
-      padding: 0.9rem 2.5rem;
-      transition: all 0.3s;
-      cursor: pointer;
-      display: inline-block;
-    }
-    .btn-ghost:hover {
-      background: var(--ivory);
-      color: var(--black);
-    }
+        /* ═══════════════════════════════════════════
+           SECTIONS
+        ═══════════════════════════════════════════ */
+        .section {
+            padding: 80px 4rem;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            margin-bottom: 1rem;
+            color: var(--ivory);
+        }
 
-    /* Rest of sections (collection, quote, craft, cta, footer) – unchanged */
-    .section {
-      padding: 80px 4rem;
-    }
-    .section-header {
-      text-align: center;
-      margin-bottom: 60px;
-    }
-    .section-title {
-      font-family: var(--font-display);
-      font-size: 2.5rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      margin-bottom: 1rem;
-      color: var(--ivory);
-    }
-    .watch-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .watch-card {
-      background: var(--deep);
-      border: 1px solid var(--border);
-      padding: 2rem;
-      text-align: center;
-      transition: border-color 0.4s, transform 0.4s;
-    }
-    .watch-card:hover {
-      border-color: var(--gold-dk);
-      transform: translateY(-4px);
-    }
-    .watch-svg-wrap {
-      margin-bottom: 2rem;
-      display: flex;
-      justify-content: center;
-    }
-    .watch-name {
-      font-family: var(--font-display);
-      font-size: 0.95rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--ivory);
-      margin-bottom: 0.8rem;
-    }
-    .watch-desc {
-      font-family: var(--font-serif);
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: var(--muted);
-      margin-bottom: 1rem;
-    }
-    .watch-price {
-      font-family: var(--font-display);
-      font-size: 0.75rem;
-      letter-spacing: 0.18em;
-      color: var(--gold);
-      margin-bottom: 1.5rem;
-    }
-    .watch-tag {
-      display: inline-block;
-      font-family: var(--font-display);
-      font-size: 0.55rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      background: var(--gold-dk);
-      color: var(--black);
-      padding: 0.4rem 1rem;
-    }
-    .quote-section {
-      padding: 100px 4rem;
-      text-align: center;
-      background: var(--deep);
-    }
-    .quote-text {
-      font-family: var(--font-serif);
-      font-size: 2rem;
-      font-style: italic;
-      color: var(--ivory);
-      max-width: 800px;
-      margin: 0 auto 2rem;
-      line-height: 1.8;
-    }
-    .quote-attr {
-      font-family: var(--font-display);
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .craft {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 3rem;
-      max-width: 1300px;
-      margin: 0 auto;
-    }
-    .craft-item {
-      padding: 2rem;
-    }
-    .craft-num {
-      font-family: var(--font-display);
-      font-size: 3rem;
-      font-weight: 600;
-      color: var(--gold);
-      opacity: 0.25;
-      margin-bottom: 1rem;
-    }
-    .craft-title {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      letter-spacing: 0.1em;
-      color: var(--ivory);
-      margin-bottom: 1rem;
-    }
-    .craft-text {
-      font-size: 0.95rem;
-      line-height: 1.8;
-      color: var(--muted);
-    }
-    .cta-section {
-      padding: 120px 4rem;
-      text-align: center;
-      background: var(--black);
-    }
-    .cta-heading {
-      font-family: var(--font-display);
-      font-size: 3.5rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      margin-bottom: 1.5rem;
-      color: var(--ivory);
-    }
-    .cta-sub {
-      font-family: var(--font-serif);
-      font-size: 1.3rem;
-      font-style: italic;
-      color: var(--muted);
-      margin-bottom: 3rem;
-    }
-    #preloader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background: #ffffff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 10000;
-      transition: opacity 0.8s ease;
-    }
-    .preloader-logo {
-      width: 120px;
-      height: auto;
-      animation: fadeZoom 1s ease forwards;
-    }
-    @keyframes fadeZoom {
-      0% { opacity: 0.6; transform: scale(0.95); }
-      100% { opacity: 1; transform: scale(1.05); }
-    }
-    footer {
-      background: var(--deep);
-      border-top: 1px solid var(--border);
-      padding: 4rem;
-    }
-    .footer-top {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 3rem;
-      max-width: 1400px;
-      margin: 0 auto 3rem;
-    }
-    .footer-brand {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      letter-spacing: 0.2em;
-      color: var(--ivory);
-      margin-bottom: 1rem;
-    }
-    .footer-brand span { color: var(--gold); }
-    .footer-tagline {
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-    .footer-col-title {
-      font-family: var(--font-display);
-      font-size: 0.7rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.2rem;
-    }
-    .footer-links {
-      list-style: none;
-    }
-    .footer-links li { margin-bottom: 0.7rem; }
-    .footer-links a {
-      font-size: 0.85rem;
-      color: var(--muted);
-      transition: color 0.3s;
-    }
-    .footer-links a:hover { color: var(--ivory); }
-    .footer-bottom {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border);
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .footer-copy {
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-    .footer-legal {
-      display: flex;
-      gap: 2rem;
-    }
-    .footer-legal a {
-      font-size: 0.75rem;
-      color: var(--muted);
-      transition: color 0.3s;
-    }
-    @media (max-width: 768px) {
-      .navbar { padding: 0 1.5rem; }
-      .hero-title { font-size: 2.8rem; }
-      .section-title { font-size: 2rem; }
-      .watch-grid { grid-template-columns: 1fr; }
-      .cta-actions { flex-direction: column; align-items: center; }
-      .footer-top { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; align-items: flex-start; }
-      .menu { width: 100%; right: 0; top: 70px; }
-    }
-  </style>
+        /* ═══════════════════════════════════════════
+           WATCH CARDS WITH VIDEO BACKGROUND + CIRCLE OVERLAY
+        ═══════════════════════════════════════════ */
+        .watch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .watch-card {
+            position: relative;
+            background: var(--deep);
+            border: 1px solid var(--border);
+            padding: 2.5rem 2rem 2rem;
+            text-align: center;
+            transition: border-color 0.4s, transform 0.4s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+            min-height: 520px;
+            isolation: isolate;
+        }
+        .watch-card:hover {
+            border-color: var(--gold-dk);
+            transform: translateY(-4px);
+        }
+
+        /* ── Card background video ── */
+        .card-bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.5;
+            transition: opacity 0.6s ease;
+        }
+        .watch-card:hover .card-bg-video {
+            opacity: 0.7;
+        }
+
+        /* ── Dark overlay for readability ── */
+        .card-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(5, 5, 5, 0.55);
+            backdrop-filter: blur(2px);
+            z-index: 1;
+            transition: background 0.4s ease;
+        }
+        .watch-card:hover .card-overlay {
+            background: rgba(5, 5, 5, 0.45);
+        }
+
+        /* ── All content sits on top ── */
+        .card-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* ── Carousel container (BIGGER) ── */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 340px;
+            aspect-ratio: 1/1;
+            margin: 0 auto 1.8rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid rgba(201, 168, 76, 0.25);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(201, 168, 76, 0.05);
+            background: rgba(10, 10, 12, 0.3);
+            backdrop-filter: blur(4px);
+            transition: border-color 0.4s, box-shadow 0.4s;
+            flex-shrink: 0;
+        }
+        .watch-card:hover .carousel-container {
+            border-color: rgba(201, 168, 76, 0.5);
+            box-shadow: 0 8px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(201, 168, 76, 0.08);
+        }
+
+        .carousel-slides {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.9s var(--ease-luxury), transform 0.9s var(--ease-luxury);
+            transform: scale(1.04);
+            pointer-events: none;
+            will-change: opacity, transform;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .carousel-slide.active {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 50%;
+        }
+
+        .carousel-slide::after {
+            content: '';
+            position: absolute;
+            inset: 6px;
+            border-radius: 50%;
+            border: 1px solid rgba(201, 168, 76, 0.1);
+            pointer-events: none;
+            transition: border-color 0.4s;
+        }
+        .watch-card:hover .carousel-slide::after {
+            border-color: rgba(201, 168, 76, 0.25);
+        }
+
+        .slide-index {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            font-family: var(--font-display);
+            font-size: 0.5rem;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.3);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(5, 5, 5, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            color: var(--ivory);
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+            user-select: none;
+            padding: 0;
+            line-height: 1;
+            font-family: var(--font-serif);
+            font-weight: 300;
+        }
+        .watch-card:hover .carousel-btn {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .carousel-btn:hover {
+            background: rgba(201, 168, 76, 0.25);
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-50%) scale(1.08);
+        }
+        .carousel-btn.prev {
+            left: 8px;
+        }
+        .carousel-btn.next {
+            right: 8px;
+        }
+        .carousel-btn:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        .carousel-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            flex-shrink: 0;
+        }
+        .carousel-dot.active {
+            background: var(--gold);
+            box-shadow: 0 0 8px rgba(201, 168, 76, 0.3);
+            width: 18px;
+            border-radius: 4px;
+        }
+        .carousel-dot:hover {
+            background: var(--gold-lt);
+            transform: scale(1.2);
+        }
+
+        .watch-name {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--ivory);
+            margin-bottom: 0.6rem;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+        }
+        .watch-desc {
+            font-family: var(--font-serif);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: rgba(240, 234, 216, 0.75);
+            margin-bottom: 0.6rem;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+        .watch-price {
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            letter-spacing: 0.18em;
+            color: var(--gold);
+            margin-bottom: 1.2rem;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+        .watch-tag {
+            display: inline-block;
+            font-family: var(--font-display);
+            font-size: 0.55rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            background: var(--gold);
+            color: var(--black);
+            padding: 0.4rem 1rem;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ═══════════════════════════════════════════
+           QUOTE
+        ═══════════════════════════════════════════ */
+        .quote-section {
+            padding: 100px 4rem;
+            text-align: center;
+            background: var(--deep);
+        }
+        .quote-text {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            font-style: italic;
+            color: var(--ivory);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+        .quote-attr {
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        /* ═══════════════════════════════════════════
+           CRAFTSMANSHIP
+        ═══════════════════════════════════════════ */
+        .craft {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .craft-item {
+            padding: 2rem;
+        }
+        .craft-num {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--gold);
+            opacity: 0.25;
+            margin-bottom: 1rem;
+        }
+        .craft-title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            letter-spacing: 0.1em;
+            color: var(--ivory);
+            margin-bottom: 1rem;
+        }
+        .craft-text {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--muted);
+        }
+
+        /* ═══════════════════════════════════════════
+           CTA
+        ═══════════════════════════════════════════ */
+        .cta-section {
+            padding: 120px 4rem;
+            text-align: center;
+            background: var(--black);
+        }
+        .cta-heading {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            color: var(--ivory);
+        }
+        .cta-sub {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--muted);
+            margin-bottom: 3rem;
+        }
+        .cta-actions {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ═══════════════════════════════════════════
+           PRELOADER
+        ═══════════════════════════════════════════ */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 0.8s ease;
+        }
+        .preloader-logo {
+            width: 120px;
+            height: auto;
+            animation: fadeZoom 1s ease forwards;
+        }
+        @keyframes fadeZoom {
+            0% {
+                opacity: 0.6;
+                transform: scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+        }
+
+        /* ═══════════════════════════════════════════
+           FOOTER
+        ═══════════════════════════════════════════ */
+        footer {
+            background: var(--deep);
+            border-top: 1px solid var(--border);
+            padding: 4rem;
+        }
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+        }
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            letter-spacing: 0.2em;
+            color: var(--ivory);
+            margin-bottom: 1rem;
+        }
+        .footer-brand span {
+            color: var(--gold);
+        }
+        .footer-tagline {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+        .footer-col-title {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.2rem;
+        }
+        .footer-links {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 0.7rem;
+        }
+        .footer-links a {
+            font-size: 0.85rem;
+            color: var(--muted);
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--ivory);
+        }
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .footer-copy {
+            font-size: 0.75rem;
+            color: var(--muted);
+        }
+        .footer-legal {
+            display: flex;
+            gap: 2rem;
+        }
+        .footer-legal a {
+            font-size: 0.75rem;
+            color: var(--muted);
+            transition: color 0.3s;
+        }
+
+        /* ═══════════════════════════════════════════
+           RESPONSIVE
+        ═══════════════════════════════════════════ */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 1.5rem;
+            }
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .watch-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .cta-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .menu {
+                width: 100%;
+                right: 0;
+                top: 70px;
+            }
+            .carousel-container {
+                max-width: 260px;
+            }
+            .carousel-btn {
+                opacity: 0.6;
+                pointer-events: auto;
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
+            }
+            .carousel-btn.prev {
+                left: 4px;
+            }
+            .carousel-btn.next {
+                right: 4px;
+            }
+            .section {
+                padding: 60px 1.5rem;
+            }
+            .quote-section {
+                padding: 60px 1.5rem;
+            }
+            .cta-section {
+                padding: 80px 1.5rem;
+            }
+            footer {
+                padding: 2.5rem 1.5rem;
+            }
+            .cta-heading {
+                font-size: 2.4rem;
+            }
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            .quote-text {
+                font-size: 1.4rem;
+            }
+            .craft {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .watch-card {
+                padding: 2rem 1.5rem 1.8rem;
+                min-height: 440px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-container {
+                max-width: 220px;
+            }
+            .watch-card {
+                padding: 1.5rem 1rem;
+                min-height: 400px;
+            }
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            .hero-cta {
+                gap: 1rem;
+            }
+            .btn-primary,
+            .btn-ghost {
+                padding: 0.7rem 1.8rem;
+                font-size: 0.6rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<!-- Preloader -->
-<div id="preloader">
-  <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hoslogoofficial.jpg" alt="House of Swiss Logo" class="preloader-logo">
-</div>
 
-<!-- ✅ FIXED NAVIGATION – Logo small & clickable -->
-<nav class="navbar" id="mainNav">
-  <a href="index.html" class="nav-logo" aria-label="Homepage">
-    <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hoslogoBGless.png" alt="House of Swiss - Home">
-  </a>
-  <div class="menu-toggle" onclick="toggleMobileMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</nav>
-
-<!-- Mobile menu -->
-<ul class="menu" id="mobileMenu">
-  <li><a href="index.html">Home</a></li>
-  <li><a href="collection.html">Collection</a></li>
-  <li><a href="contact.html">Contact</a></li>
-  <li><a href="craft.html">Craft</a></li>
-  <li><a href="contact.html" class="nav-cta">Book Consultation</a></li>
-</ul>
-
-<!-- Hero section without clock SVG -->
-<section class="hero">
-  <video autoplay muted loop playsinline class="hero-bg-video">
-    <source src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hospremiumwatchreel/hospremiumwatchreel.mp4" type="video/mp4">
-  </video>
-  <div class="hero-rings">
-    <div class="ring ring-1"></div>
-    <div class="ring ring-2"></div>
-    <div class="ring ring-3"></div>
-  </div>
-  <div class="hero-content">
-    <span class="hero-label reveal">Swiss Watchmaking Excellence</span>
-    <h1 class="hero-title reveal reveal-delay-1">Timeless Precision</h1>
-    <p class="hero-subtitle reveal reveal-delay-2">Where centuries of tradition meet contemporary innovation. Every second, perfected.</p>
-    <div class="hero-cta reveal reveal-delay-3">
-      <a href="collection.html" class="btn-primary">Explore Collection</a>
-      <a href="contact.html" class="btn-ghost">Book Consultation</a>
+    <!-- Preloader -->
+    <div id="preloader">
+        <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hoslogoofficial.jpg" alt="House of Swiss Logo" class="preloader-logo">
     </div>
-  </div>
-</section>
 
-<!-- COLLECTION PREVIEW (same as before) -->
-<section class="section" id="collection" style="background: var(--black);">
-  <div class="section-header">
-    <span class="label reveal">The Finest Timepieces</span>
-    <h2 class="section-title reveal reveal-delay-1">Our Collection</h2>
-    <span class="gold-rule reveal reveal-delay-2"></span>
-  </div>
-  <div class="watch-grid">
-    <div class="watch-card reveal">
-      <div class="watch-svg-wrap"><svg viewBox="0 0 120 120" width="110" height="110" xmlns="http://www.w3.org/2000/svg" fill="none"><circle cx="60" cy="60" r="50" fill="#0a0a0d" stroke="rgba(201,168,76,0.25)" stroke-width="1"/><circle cx="60" cy="60" r="42" fill="#0c0c0f"/><circle cx="60" cy="60" r="36" stroke="#1c1c22" stroke-width="0.6"/><g stroke="#c9a84c" stroke-width="1" opacity="0.5"><line x1="60" y1="22" x2="60" y2="28"/><line x1="60" y1="92" x2="60" y2="98"/><line x1="22" y1="60" x2="28" y2="60"/><line x1="92" y1="60" x2="98" y2="60"/></g><line x1="60" y1="60" x2="60" y2="35" stroke="#f0ead8" stroke-width="2" stroke-linecap="round"/><line x1="60" y1="60" x2="78" y2="68" stroke="#f0ead8" stroke-width="1.5" stroke-linecap="round"/><circle cx="60" cy="60" r="3" fill="#c9a84c"/></svg></div>
-      <div class="watch-name">SEGMENT A</div>
-      <div class="watch-desc">Essential Timepieces<br/>Premium Entry (GR : AAA)</div>
-      <div class="watch-price">BDT 5,000 - 8,000</div>
-      <span class="watch-tag">Starter Collection</span>
+    <!-- NAV -->
+    <nav class="navbar" id="mainNav">
+        <a href="index.html" class="nav-logo" aria-label="Homepage">
+            <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hoslogoBGless.png" alt="House of Swiss - Home">
+        </a>
+        <div class="menu-toggle" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <ul class="menu" id="mobileMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="craft.html">Craft</a></li>
+        <li><a href="contact.html" class="nav-cta">Book Consultation</a></li>
+    </ul>
+
+    <!-- HERO -->
+    <section class="hero">
+        <video autoplay muted loop playsinline preload="auto" poster="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hoslogoBGless.png" class="hero-bg-video" id="heroVideo">
+            <source src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hospremiumwatchreel/hospremiumwatchreel.mp4" type="video/mp4">
+        </video>
+        <div class="hero-rings">
+            <div class="ring ring-1"></div>
+            <div class="ring ring-2"></div>
+            <div class="ring ring-3"></div>
+        </div>
+        <div class="hero-content">
+            <span class="hero-label reveal">Swiss Watchmaking Excellence</span>
+            <h1 class="hero-title reveal reveal-delay-1">Timeless Precision</h1>
+            <p class="hero-subtitle reveal reveal-delay-2">Where centuries of tradition meet contemporary innovation. Every second, perfected.</p>
+            <div class="hero-cta reveal reveal-delay-3">
+                <a href="#collection" class="btn-primary">Explore Collection</a>
+                <a href="contact.html" class="btn-ghost">Book Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- COLLECTION PREVIEW with Video Background + Circle Carousels -->
+    <section class="section" id="collection" style="background: var(--black);">
+        <div class="section-header">
+            <span class="label reveal">The Finest Timepieces</span>
+            <h2 class="section-title reveal reveal-delay-1">Our Collection</h2>
+            <span class="gold-rule reveal reveal-delay-2"></span>
+        </div>
+
+        <div class="watch-grid">
+
+            <!-- ─── SEGMENT A ─── -->
+            <div class="watch-card reveal" data-segment="a">
+                <!-- Background video -->
+                <video autoplay muted loop playsinline preload="metadata" class="card-bg-video">
+                    <source src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hospremiumwatchreel/updated%20better%20quality/lv_0_20260726032853.mp4" type="video/mp4">
+                </video>
+                <div class="card-overlay"></div>
+
+                <div class="card-content">
+                    <div class="carousel-container" id="carousel-a">
+                        <div class="carousel-slides">
+                            <div class="carousel-slide active">
+                                <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/watch-segment-a-1.jpg" alt="Segment A - Watch 1" loading="lazy">
+                                <span class="slide-index">01</span>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/watch-segment-a-2.jpg" alt="Segment A - Watch 2" loading="lazy">
+                                <span class="slide-index">02</span>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/watch-segment-a-3.jpg" alt="Segment A - Watch 3" loading="lazy">
+                                <span class="slide-index">03</span>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/watch-segment-a-4.jpg" alt="Segment A - Watch 4" loading="lazy">
+                                <span class="slide-index">04</span>
+                            </div>
+                        </div>
+                        <button class="carousel-btn prev" aria-label="Previous">‹</button>
+                        <button class="carousel-btn next" aria-label="Next">›</button>
+                    </div>
+                    <div class="carousel-dots" data-target="carousel-a"></div>
+                    <div class="watch-name">SEGMENT A</div>
+                    <div class="watch-desc">Essential Timepieces<br />Premium Entry (GR : AAA)</div>
+                    <div class="watch-price">BDT 5,000 - 8,000</div>
+                    <span class="watch-tag">Starter Collection</span>
+                </div>
+            </div>
+
+            <!-- ─── SEGMENT B ─── -->
+            <div class="watch-card reveal reveal-delay-1" data-segment="b">
+                <video autoplay muted loop playsinline preload="metadata" class="card-bg-video">
+                    <source src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hospremiumwatchreel/updated%20better%20quality/lv_0_20260726033217.mp4" type="video/mp4">
+                </video>
+                <div class="card-overlay"></div>
+
+                <div class="card-content">
+                    <div class="carousel-container" id="carousel-b">
+                        <div class="carousel-slides">
+                            <div class="carousel-slide active">
+                                <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/watch-segment-b-1.jpg" alt="Segment B - Watch 1" loading="lazy">
+                                <span class="slide-index">01</span>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/watch-segment-b-2.jpg" alt="Segment B - Watch 2" loading="lazy">
+                                <span class="slide-index">02</span>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/watch-segment-b-3.jpg" alt="Segment B - Watch 3" loading="lazy">
+                                <span class="slide-index">03</span>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/watch-segment-b-4.jpg" alt="Segment B - Watch 4" loading="lazy">
+                                <span class="slide-index">04</span>
+                            </div>
+                        </div>
+                        <button class="carousel-btn prev" aria-label="Previous">‹</button>
+                        <button class="carousel-btn next" aria-label="Next">›</button>
+                    </div>
+                    <div class="carousel-dots" data-target="carousel-b"></div>
+                    <div class="watch-name">SEGMENT B</div>
+                    <div class="watch-desc">Authentic / Premium Units<br />(GR : AAA+ / MASTER)</div>
+                    <div class="watch-price">BDT 10,000 - 24,000</div>
+                    <span class="watch-tag">Signature Piece</span>
+                </div>
+            </div>
+
+            <!-- ─── SEGMENT C ─── -->
+            <div class="watch-card reveal reveal-delay-2" data-segment="c">
+                <video autoplay muted loop playsinline preload="metadata" class="card-bg-video">
+                    <source src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hospremiumwatchreel/updated%20better%20quality/lv_0_20260726033652.mp4" type="video/mp4">
+                </video>
+                <div class="card-overlay"></div>
+
+                <div class="card-content">
+                    <div class="carousel-container" id="carousel-c">
+                        <div class="carousel-slides">
+                            <div class="carousel-slide active">
+                                <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/watch-segment-c-1.jpg" alt="Segment C - Watch 1" loading="lazy">
+                                <span class="slide-index">01</span>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/watch-segment-c-2.jpg" alt="Segment C - Watch 2" loading="lazy">
+                                <span class="slide-index">02</span>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/watch-segment-c-3.jpg" alt="Segment C - Watch 3" loading="lazy">
+                                <span class="slide-index">03</span>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/watch-segment-c-4.jpg" alt="Segment C - Watch 4" loading="lazy">
+                                <span class="slide-index">04</span>
+                            </div>
+                        </div>
+                        <button class="carousel-btn prev" aria-label="Previous">‹</button>
+                        <button class="carousel-btn next" aria-label="Next">›</button>
+                    </div>
+                    <div class="carousel-dots" data-target="carousel-c"></div>
+                    <div class="watch-name">SEGMENT C</div>
+                    <div class="watch-desc">Magnus Opus<br />Beginning of the Finest Craftsmanship (GR : SWISS)</div>
+                    <div class="watch-price">BDT 40,000 - 2,00,000</div>
+                    <span class="watch-tag">Superior Built</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div style="text-align:center; margin-top:3.5rem;" class="reveal">
+            <a href="collection.html" class="btn-primary">View Full Collection</a>
+        </div>
+    </section>
+
+    <!-- QUOTE -->
+    <div class="quote-section">
+        <p class="quote-text reveal">"We do not serve watches for the impatient. We serve for those who understand perfection, the one percent"</p>
+        <span class="gold-rule reveal reveal-delay-1"></span>
+        <p class="quote-attr reveal reveal-delay-2">Masnoon Nishad — Founder, House of Swiss</p>
     </div>
-    <div class="watch-card reveal reveal-delay-1">
-      <div class="watch-svg-wrap"><svg viewBox="0 0 120 120" width="110" height="110" xmlns="http://www.w3.org/2000/svg" fill="none"><circle cx="60" cy="60" r="50" fill="#0a0a0d" stroke="rgba(201,168,76,0.3)" stroke-width="1"/><circle cx="60" cy="60" r="42" fill="#0c0c0f"/><circle cx="60" cy="60" r="36" stroke="#1c1c22" stroke-width="0.6"/><g stroke="#c9a84c" stroke-width="1"><line x1="60" y1="22" x2="60" y2="28"/><line x1="60" y1="92" x2="60" y2="98"/><line x1="22" y1="60" x2="28" y2="60"/><line x1="92" y1="60" x2="98" y2="60"/></g><line x1="60" y1="60" x2="60" y2="30" stroke="#f0ead8" stroke-width="2.2"/><line x1="60" y1="60" x2="82" y2="74" stroke="#f0ead8" stroke-width="1.6"/><circle cx="60" cy="60" r="3.5" fill="#c9a84c"/></svg></div>
-      <div class="watch-name">SEGMENT B</div>
-      <div class="watch-desc">authentic / premium units<br/>(GR : AAA+/ MASTER)</div>
-      <div class="watch-price">BDT 10,000 - 24,000</div>
-      <span class="watch-tag">Signature Piece</span>
-    </div>
-    <div class="watch-card reveal reveal-delay-2">
-      <div class="watch-svg-wrap"><svg viewBox="0 0 120 120" width="110" height="110" xmlns="http://www.w3.org/2000/svg" fill="none"><circle cx="60" cy="60" r="50" fill="#0a0a0d" stroke="rgba(201,168,76,0.3)" stroke-width="1"/><circle cx="60" cy="60" r="42" fill="#0c0c0f"/><circle cx="60" cy="60" r="36" stroke="#1c1c22" stroke-width="0.6"/><g stroke="#c9a84c" stroke-width="1"><line x1="60" y1="22" x2="60" y2="28"/><line x1="60" y1="92" x2="60" y2="98"/><line x1="22" y1="60" x2="28" y2="60"/><line x1="92" y1="60" x2="98" y2="60"/></g><circle cx="60" cy="42" r="9" stroke="#252530" stroke-width="0.7" fill="#0a0a0d"/><circle cx="44" cy="68" r="7" stroke="#252530" stroke-width="0.7" fill="#0a0a0d"/><circle cx="76" cy="68" r="7" stroke="#252530" stroke-width="0.7" fill="#0a0a0d"/><line x1="60" y1="60" x2="60" y2="36" stroke="#f0ead8" stroke-width="1.8"/><line x1="60" y1="60" x2="80" y2="66" stroke="#f0ead8" stroke-width="1.5"/><circle cx="60" cy="60" r="3" fill="#c9a84c"/></svg></div>
-      <div class="watch-name">SEGMENT C</div>
-      <div class="watch-desc">Magnus Opus<br/>Beginning of the Finest Craftsmanship (GR : SWISS)</div>
-      <div class="watch-price">BDT 40,000 - BDT 2,00,000</div>
-      <span class="watch-tag">Superior Built</span>
-    </div>
-  </div>
-  <div style="text-align:center; margin-top:3.5rem;" class="reveal"><a href="collection.html" class="btn-primary">View Full Collection</a></div>
-</section>
 
-<!-- QUOTE SECTION -->
-<div class="quote-section">
-  <p class="quote-text reveal">"We do not serve watches for the impatient. We serve for those who understand perfection, the one percent"</p>
-  <span class="gold-rule reveal reveal-delay-1"></span>
-  <p class="quote-attr reveal reveal-delay-2">Masnoon Nishad — Founder, House of Swiss</p>
-</div>
+    <!-- CRAFTSMANSHIP -->
+    <section class="section" id="craft" style="background: var(--black);">
+        <div class="section-header">
+            <span class="label reveal">Atelier</span>
+            <h2 class="section-title reveal reveal-delay-1">The Art of Precision</h2>
+            <span class="gold-rule reveal reveal-delay-2"></span>
+        </div>
+        <div class="craft">
+            <div class="craft-item reveal">
+                <div class="craft-num">01</div>
+                <span class="gold-rule left"></span>
+                <div class="craft-title">In-House Movements</div>
+                <p class="craft-text">Every calibre is designed, engineered and assembled within our Geneva atelier. From the hairspring to the escape wheel — no detail is delegated, no compromise accepted.</p>
+            </div>
+            <div class="craft-item reveal reveal-delay-1">
+                <div class="craft-num">02</div>
+                <span class="gold-rule left"></span>
+                <div class="craft-title">Geneva Seal Certified</div>
+                <p class="craft-text">The Poinçon de Genève is the most demanding hallmark in horology — awarded only after passing eleven strict criteria of finishing and functional excellence.</p>
+            </div>
+            <div class="craft-item reveal reveal-delay-2">
+                <div class="craft-num">03</div>
+                <span class="gold-rule left"></span>
+                <div class="craft-title">Hand-Finished Surfaces</div>
+                <p class="craft-text">Each bridge and plate undergoes weeks of finishing — anglage, perlage, côtes de Genève — invisible to the wearer, irreplaceable in character.</p>
+            </div>
+        </div>
+    </section>
 
-<!-- CRAFTSMANSHIP -->
-<section class="section" id="craft" style="background: var(--black);">
-  <div class="section-header"><span class="label reveal">Atelier</span><h2 class="section-title reveal reveal-delay-1">The Art of Precision</h2><span class="gold-rule reveal reveal-delay-2"></span></div>
-  <div class="craft"><div class="craft-item reveal"><div class="craft-num">01</div><span class="gold-rule left"></span><div class="craft-title">In-House Movements</div><p class="craft-text">Every calibre is designed, engineered and assembled within our Geneva atelier. From the hairspring to the escape wheel — no detail is delegated, no compromise accepted.</p></div>
-  <div class="craft-item reveal reveal-delay-1"><div class="craft-num">02</div><span class="gold-rule left"></span><div class="craft-title">Geneva Seal Certified</div><p class="craft-text">The Poinçon de Genève is the most demanding hallmark in horology — awarded only after passing eleven strict criteria of finishing and functional excellence.</p></div>
-  <div class="craft-item reveal reveal-delay-2"><div class="craft-num">03</div><span class="gold-rule left"></span><div class="craft-title">Hand-Finished Surfaces</div><p class="craft-text">Each bridge and plate undergoes weeks of finishing — anglage, perlage, côtes de Genève — invisible to the wearer, irreplaceable in character.</p></div></div>
-</section>
+    <!-- CTA -->
+    <section class="cta-section" id="contact">
+        <span class="label cta-label reveal">Private Consultation</span>
+        <h2 class="cta-heading reveal reveal-delay-1">Your time.<br />Your legacy.</h2>
+        <p class="cta-sub reveal reveal-delay-2">Commission a bespoke timepiece crafted exclusively for you.</p>
+        <div class="cta-actions reveal reveal-delay-3">
+            <a href="contact.html" class="btn-primary">Book a Consultation</a>
+            <a href="collection.html" class="btn-ghost">View Collections</a>
+        </div>
+    </section>
 
-<!-- CTA -->
-<section class="cta-section" id="contact"><span class="label cta-label reveal">Private Consultation</span><h2 class="cta-heading reveal reveal-delay-1">Your time.<br/>Your legacy.</h2><p class="cta-sub reveal reveal-delay-2">Commission a bespoke timepiece crafted exclusively for you.</p><div class="cta-actions reveal reveal-delay-3"><a href="contact.html" class="btn-primary">Book a Consultation</a><a href="collection.html" class="btn-ghost">View Collections</a></div></section>
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-top">
+            <div>
+                <div class="footer-brand">HOUSE <span>OF</span> SWISS</div>
+                <p class="footer-tagline">Delivering Swiss Heritages since 2022. Every second, perfected.</p>
+            </div>
+            <div>
+                <div class="footer-col-title">Collection</div>
+                <ul class="footer-links">
+                    <li><a href="collection.html">Full Collection</a></li>
+                    <li><a href="collection.html">Segment A</a></li>
+                    <li><a href="collection.html">Segment B</a></li>
+                    <li><a href="collection.html">Segment C</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-col-title">Maison</div>
+                <ul class="footer-links">
+                    <li><a href="maison.html">Our Heritage</a></li>
+                    <li><a href="maison.html">The Atelier</a></li>
+                    <li><a href="craft.html">Craftsmanship</a></li>
+                    <li><a href="maison.html">Certifications</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-col-title">Contact</div>
+                <ul class="footer-links">
+                    <li><a href="contact.html">Boutique Locations</a></li>
+                    <li><a href="contact.html">Book Consultation</a></li>
+                    <li><a href="contact.html">After-Sales Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2026 House of Swiss · Banani, Dhaka · All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Use</a>
+                <a href="#">Cookie Settings</a>
+            </div>
+        </div>
+    </footer>
 
-<!-- FOOTER -->
-<footer><div class="footer-top"><div><div class="footer-brand">HOUSE <span>OF</span> SWISS</div><p class="footer-tagline">Delivering Swiss Heritages since 2022. Every second, perfected.</p></div><div><div class="footer-col-title">Collection</div><ul class="footer-links"><li><a href="collection.html">Full Collection</a></li><li><a href="collection.html">Segment A</a></li><li><a href="collection.html">Segment B</a></li><li><a href="collection.html">Segment C</a></li></ul></div><div><div class="footer-col-title">Maison</div><ul class="footer-links"><li><a href="maison.html">Our Heritage</a></li><li><a href="maison.html">The Atelier</a></li><li><a href="craft.html">Craftsmanship</a></li><li><a href="maison.html">Certifications</a></li></ul></div><div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="contact.html">Boutique Locations</a></li><li><a href="contact.html">Book Consultation</a></li><li><a href="contact.html">After-Sales Service</a></li></ul></div></div><div class="footer-bottom"><p class="footer-copy">© 2026 House of Swiss · Banani, Dhaka · All rights reserved.</p><div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Cookie Settings</a></div></div></footer>
+    <script>
+        // ── Preloader ──
+        window.addEventListener("load", () => {
+            const preloader = document.getElementById("preloader");
+            if (preloader) {
+                preloader.style.opacity = "0";
+                setTimeout(() => { preloader.style.display = "none"; }, 800);
+            }
+        });
 
-<script>
-  // Preloader removal
-  window.addEventListener("load", () => {
-    const preloader = document.getElementById("preloader");
-    if(preloader) {
-      preloader.style.opacity = "0";
-      setTimeout(() => { preloader.style.display = "none"; }, 800);
-    }
-  });
+        // ── Sticky navbar ──
+        const navbar = document.getElementById("mainNav");
+        window.addEventListener("scroll", () => {
+            if (navbar) navbar.classList.toggle("scrolled", window.scrollY > 50);
+        });
 
-  // Sticky navbar + scroll reveal observer
-  const navbar = document.getElementById("mainNav");
-  window.addEventListener("scroll", () => {
-    if(navbar) navbar.classList.toggle("scrolled", window.scrollY > 50);
-  });
+        // ── Scroll Reveal ──
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: "0px 0px -30px 0px" });
+        document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
 
-  // Intersection Observer for reveals
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: "0px 0px -30px 0px" });
-  document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+        // ── Mobile menu ──
+        window.toggleMobileMenu = function() {
+            const menu = document.getElementById("mobileMenu");
+            if (menu) menu.classList.toggle("show");
+        };
+        document.querySelectorAll("#mobileMenu a").forEach(link => {
+            link.addEventListener("click", () => {
+                document.getElementById("mobileMenu")?.classList.remove("show");
+            });
+        });
 
-  // Mobile menu toggle
-  window.toggleMobileMenu = function() {
-    const menu = document.getElementById("mobileMenu");
-    if(menu) menu.classList.toggle("show");
-  };
+        // ── Smooth anchor links ──
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener("click", function(e) {
+                const targetId = this.getAttribute("href");
+                if (targetId && targetId !== "#" && targetId !== "#/") {
+                    const targetElem = document.querySelector(targetId);
+                    if (targetElem) {
+                        e.preventDefault();
+                        targetElem.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }
+                }
+            });
+        });
 
-  // Close menu when clicking any link
-  document.querySelectorAll("#mobileMenu a").forEach(link => {
-    link.addEventListener("click", () => {
-      document.getElementById("mobileMenu")?.classList.remove("show");
-    });
-  });
+        // ── Hero rings parallax ──
+        const ringsContainer = document.querySelector(".hero-rings");
+        window.addEventListener("scroll", () => {
+            if (ringsContainer && window.scrollY < window.innerHeight) {
+                ringsContainer.style.transform =
+                    `translate(-50%, calc(-50% + ${window.scrollY * 0.1}px))`;
+            }
+        });
 
-  // Smooth anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function(e) {
-      const targetId = this.getAttribute("href");
-      if(targetId && targetId !== "#" && targetId !== "#/") {
-        const targetElem = document.querySelector(targetId);
-        if(targetElem) {
-          e.preventDefault();
-          targetElem.scrollIntoView({ behavior: "smooth", block: "start" });
+        // ── Hero video playback fallback ──
+        const heroVideo = document.getElementById('heroVideo');
+        if (heroVideo) {
+            heroVideo.play().catch(() => {
+                const playOnInteraction = () => {
+                    heroVideo.play().then(() => {
+                        document.removeEventListener('click', playOnInteraction);
+                        document.removeEventListener('touchstart', playOnInteraction);
+                    }).catch(e => console.log('Video play still blocked.'));
+                };
+                document.addEventListener('click', playOnInteraction);
+                document.addEventListener('touchstart', playOnInteraction);
+            });
         }
-      }
-    });
-  });
 
-  // Hero rings subtle parallax
-  const ringsContainer = document.querySelector(".hero-rings");
-  window.addEventListener("scroll", () => {
-    if(ringsContainer && window.scrollY < window.innerHeight) {
-      ringsContainer.style.transform = `translate(-50%, calc(-50% + ${window.scrollY * 0.1}px))`;
-    }
-  });
-</script>
+        // ── Ensure all card background videos play ──
+        document.querySelectorAll('.card-bg-video').forEach(vid => {
+            vid.play().catch(() => {
+                // If autoplay fails, try on interaction
+                const playCardVideo = () => {
+                    vid.play().catch(() => {});
+                    document.removeEventListener('click', playCardVideo);
+                    document.removeEventListener('touchstart', playCardVideo);
+                };
+                document.addEventListener('click', playCardVideo);
+                document.addEventListener('touchstart', playCardVideo);
+            });
+        });
+
+        // ═══════════════════════════════════════════════════
+        //  CAROUSEL ENGINE
+        // ═══════════════════════════════════════════════════
+        (function initCarousels() {
+            const containers = document.querySelectorAll('.carousel-container');
+
+            containers.forEach(container => {
+                const slides = container.querySelectorAll('.carousel-slide');
+                const prevBtn = container.querySelector('.carousel-btn.prev');
+                const nextBtn = container.querySelector('.carousel-btn.next');
+                const dotsContainer = document.querySelector(`.carousel-dots[data-target="${container.id}"]`);
+                let current = 0;
+                let interval = null;
+                const total = slides.length;
+                const AUTOPLAY_DELAY = 4000;
+
+                if (dotsContainer) {
+                    dotsContainer.innerHTML = '';
+                    for (let i = 0; i < total; i++) {
+                        const dot = document.createElement('button');
+                        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+                        dot.setAttribute('data-index', i);
+                        dot.setAttribute('aria-label', `Slide ${i + 1}`);
+                        dot.addEventListener('click', () => goTo(i));
+                        dotsContainer.appendChild(dot);
+                    }
+                }
+
+                function goTo(index) {
+                    if (index < 0) index = total - 1;
+                    if (index >= total) index = 0;
+                    current = index;
+
+                    slides.forEach((slide, i) => {
+                        slide.classList.toggle('active', i === current);
+                    });
+
+                    if (dotsContainer) {
+                        const dots = dotsContainer.querySelectorAll('.carousel-dot');
+                        dots.forEach((dot, i) => {
+                            dot.classList.toggle('active', i === current);
+                        });
+                    }
+                }
+
+                function next() { goTo(current + 1); }
+
+                function prev() { goTo(current - 1); }
+
+                function startAutoplay() {
+                    stopAutoplay();
+                    interval = setInterval(next, AUTOPLAY_DELAY);
+                }
+
+                function stopAutoplay() {
+                    if (interval) {
+                        clearInterval(interval);
+                        interval = null;
+                    }
+                }
+
+                if (nextBtn) nextBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    next();
+                    startAutoplay();
+                });
+                if (prevBtn) prevBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    prev();
+                    startAutoplay();
+                });
+
+                container.addEventListener('mouseenter', stopAutoplay);
+                container.addEventListener('mouseleave', startAutoplay);
+                container.addEventListener('touchstart', stopAutoplay, { passive: true });
+                container.addEventListener('touchend', startAutoplay, { passive: true });
+
+                goTo(0);
+                startAutoplay();
+
+                container.__carousel = { goTo, next, prev, startAutoplay, stopAutoplay };
+            });
+        })();
+    </script>
+
 </body>
 </html>
