@@ -500,10 +500,10 @@
     },
      {
       id: 'Santos de CartierWHITE',
-      name: 'Black Submariner Master Grade',
+      name: 'Cartier Santos De Master Grade ',
       tag: 'Iconic classic watch',
       price: 'BDT 18,500',
-      desc: 'Automatic movement with 43mm steel case.',
+      desc: 'Automatic movement, Updated easy change buckle, precise details and quality.',
       images: [
         'https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hotlink-ok/Santos%20navy%20blue/IMG-20260725-WA0034.jpg',
         'https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/hotlink-ok/Santos%20navy%20blue/IMG-20260725-WA0032.jpg',
@@ -694,28 +694,16 @@
   });
 
   //BANK
-  function toggleBankDetails() {
-    var details = document.getElementById('bank-details');
+function toggleBankDetails() {
+    var details = document.getElementById('bankDetails');  // correct ID
     if (details.style.display === 'none' || details.style.display === '') {
         details.style.display = 'block';
     } else {
         details.style.display = 'none';
     }
 }
-
-      // ─── Update WhatsApp link with current watch ──
-    const whatsappLink = document.getElementById('whatsappLink');
-    if (whatsappLink) {
-        const phone = '+8801786834892'; // ← CHANGE TO YOUR NUMBER
-        const message = `Hi, I want to buy the *${watch.name}* (${watch.price}). Please send me the payment link and shipping details.`;
-        whatsappLink.href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-    }
-
-    // ─── Update reference watch name ──
-    const refWatchName = document.getElementById('refWatchName');
-    if (refWatchName) {
-        refWatchName.textContent = watch.name;
-    }
+https://wa.me/8801786834892
+ 
 </script>
 
 </body>
