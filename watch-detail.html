@@ -614,9 +614,26 @@
     updateArrows();
 
     // ─── Attach arrow event listeners ──────────────────
+    // ─── Attach arrow event listeners ──────────────────
     document.getElementById('prevArrow').addEventListener('click', prevImage);
     document.getElementById('nextArrow').addEventListener('click', nextImage);
-  });
+
+    // ════════════════════════════════════════════════════
+    // ─── UPDATE WHATSAPP LINK WITH CURRENT WATCH ───
+    // ════════════════════════════════════════════════════
+    const whatsappLink = document.getElementById('whatsappLink');
+    if (whatsappLink) {
+        const phone = '8801786834892';  // your number (without +)
+        const message = `Hi, I want to buy the *${watch.name}* (${watch.price}). Please send me the payment link and shipping details.`;
+        whatsappLink.href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    }
+
+    // ─── Update the bank reference watch name ──
+    const refWatchName = document.getElementById('refWatchName');
+    if (refWatchName) {
+        refWatchName.textContent = watch.name;
+    }
+});
 
   // ═══════════════════════════════════════════════════
   // GALLERY FUNCTIONS
@@ -702,7 +719,7 @@ function toggleBankDetails() {
         details.style.display = 'none';
     }
 }
-https://wa.me/8801786834892
+
  
 </script>
 
