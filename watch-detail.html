@@ -173,6 +173,20 @@
     .spec-value {
       color: var(--ivory);
     }
+/*PAYMENTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT*/
+    .payment-options h4 {
+  font-family: var(--font-display);
+  letter-spacing: 0.15em;
+  color: var(--gold);
+}
+#whatsappLink:hover {
+  background: #128C7E !important;
+  transform: scale(1.02);
+  transition: 0.2s;
+}
+#bankDetails {
+  border-left: 2px solid var(--gold);
+}
 
     /* ─── Arrow Buttons ─── */
 .gallery-arrow {
@@ -345,7 +359,34 @@
   <div class="detail-specs">
     <h3>Specifications</h3>
     <div id="specsContainer">
-      <!-- specs injected by JS -->
+      
+    </div>
+  </div>
+    <!-- ═══ PAYMENT OPTIONS ═══ -->
+  <div class="payment-options" style="margin-top: 30px; border-top: 1px solid var(--border); padding-top: 20px; width: 100%; max-width: 500px;">
+    <h4 style="font-family: var(--font-display); font-size: 0.8rem; letter-spacing: 0.15em; color: var(--gold); margin-bottom: 15px;">💳 Payment Methods</h4>
+
+    <!-- WhatsApp link (will be updated by JS) -->
+    <a id="whatsappLink" 
+       href="#" 
+       target="_blank" 
+       style="display: inline-block; background: #25D366; color: white; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: bold; margin-right: 10px; margin-bottom: 10px;">
+       📱 Pay via WhatsApp
+    </a>
+
+    <!-- Bank Toggle Button -->
+    <button onclick="toggleBankDetails()" 
+            style="display: inline-block; background: transparent; color: var(--gold); padding: 12px 24px; border-radius: 50px; border: 1px solid var(--gold); font-weight: bold; cursor: pointer; margin-bottom: 10px;">
+       🏦 Bank Transfer
+    </button>
+
+    <!-- Hidden Bank Details -->
+    <div id="bankDetails" style="display: none; background: rgba(255,255,255,0.04); padding: 15px; border-radius: 8px; margin-top: 10px; font-size: 0.85rem; line-height: 1.8; text-align: left; border-left: 2px solid var(--gold);">
+        <p><strong>Bank Name:</strong> [Your Bank Name]</p>
+        <p><strong>Account Holder:</strong> [Your Full Name]</p>
+        <p><strong>Account Number:</strong> [Your Account Number]</p>
+        <p><strong>IFSC / SWIFT:</strong> [Your IFSC Code]</p>
+        <p style="color: var(--gold); font-size: 0.75rem;">⚠️ Please use the <strong id="refWatchName">Watch</strong> as the reference when transferring.</p>
     </div>
   </div>
   <a href="collection.html" class="btn-back">← Back to Collection</a>
@@ -383,6 +424,7 @@
         { label: 'Water Resistance', value: '50m' },
         { label: 'Crystal', value: 'Sapphire' }
       ]
+    
     },
     {
       id: 'Santos de CartierBLUE',
@@ -650,6 +692,30 @@
     if (e.key === 'ArrowLeft') prevImage();
     if (e.key === 'ArrowRight') nextImage();
   });
+
+  //BANK
+  function toggleBankDetails() {
+    var details = document.getElementById('bank-details');
+    if (details.style.display === 'none' || details.style.display === '') {
+        details.style.display = 'block';
+    } else {
+        details.style.display = 'none';
+    }
+}
+
+      // ─── Update WhatsApp link with current watch ──
+    const whatsappLink = document.getElementById('whatsappLink');
+    if (whatsappLink) {
+        const phone = '+8801786834892'; // ← CHANGE TO YOUR NUMBER
+        const message = `Hi, I want to buy the *${watch.name}* (${watch.price}). Please send me the payment link and shipping details.`;
+        whatsappLink.href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    }
+
+    // ─── Update reference watch name ──
+    const refWatchName = document.getElementById('refWatchName');
+    if (refWatchName) {
+        refWatchName.textContent = watch.name;
+    }
 </script>
 
 </body>
