@@ -973,6 +973,68 @@
             .carousel-btn.next {
                 right: 4px;
             }
+            /* ═══════════════════════════════════════════
+   TRUST STRIP
+═══════════════════════════════════════════ */
+
+.trust-strip {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
+    background: var(--deep);
+
+    border-top: 1px solid rgba(201, 168, 76, 0.18);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.18);
+}
+
+.trust-item {
+    min-height: 105px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.9rem;
+
+    padding: 1.2rem 1rem;
+
+    border-right: 1px solid rgba(201, 168, 76, 0.12);
+}
+
+.trust-item:last-child {
+    border-right: none;
+}
+
+.trust-icon {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    color: var(--gold);
+
+    flex-shrink: 0;
+}
+
+.trust-item div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.trust-item strong {
+    font-family: var(--font-display);
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    color: var(--ivory);
+    text-transform: uppercase;
+}
+
+.trust-item span:not(.trust-icon) {
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    line-height: 1.4;
+    color: var(--muted);
+}
             .section {
                 padding: 60px 1.5rem;
             }
@@ -1005,6 +1067,21 @@
         }
 
         @media (max-width: 480px) {
+            .trust-strip {
+    grid-template-columns: 1fr;
+}
+
+.trust-item {
+    justify-content: flex-start;
+    padding: 1rem 1.5rem;
+
+    border-right: none;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+}
+
+.trust-item:last-child {
+    border-bottom: none;
+}
             .carousel-container {
                 max-width: 220px;
             }
@@ -1023,6 +1100,24 @@
                 padding: 0.7rem 1.8rem;
                 font-size: 0.6rem;
             }
+            .trust-strip {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.trust-item {
+    min-height: 90px;
+}
+
+.trust-item:nth-child(2),
+.trust-item:nth-child(4) {
+    border-right: none;
+}
+
+.trust-item:nth-child(1),
+.trust-item:nth-child(2),
+.trust-item:nth-child(3) {
+    border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+}
         }
     </style>
 </head>
@@ -1116,6 +1211,50 @@
 
 </section>
 
+<!-- TRUST STRIP -->
+<section class="trust-strip">
+
+    <div class="trust-item">
+        <span class="trust-icon">◈</span>
+        <div>
+            <strong>AUTHENTICITY</strong>
+            <span>Carefully verified timepieces</span>
+        </div>
+    </div>
+
+    <div class="trust-item">
+        <span class="trust-icon">◇</span>
+        <div>
+            <strong>WARRANTY</strong>
+            <span>Warranty on eligible watches</span>
+        </div>
+    </div>
+
+    <div class="trust-item">
+        <span class="trust-icon">□</span>
+        <div>
+            <strong>BOX & PAPERS</strong>
+            <span>Available with selected pieces</span>
+        </div>
+    </div>
+
+    <div class="trust-item">
+        <span class="trust-icon">✦</span>
+        <div>
+            <strong>QUALITY CHECKED</strong>
+            <span>Inspected before dispatch</span>
+        </div>
+    </div>
+
+    <div class="trust-item">
+        <span class="trust-icon">⌁</span>
+        <div>
+            <strong>NATIONWIDE DELIVERY</strong>
+            <span>Delivery across Bangladesh</span>
+        </div>
+    </div>
+
+</section>
     <!-- COLLECTION PREVIEW with Video Background + Circle Carousels -->
     <section class="section" id="collection" style="background: var(--black);">
         <div class="section-header">
