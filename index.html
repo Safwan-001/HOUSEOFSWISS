@@ -7,7 +7,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=Raleway:wght@200;300;400&display=swap" rel="stylesheet" />
-    <script type="module" src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/3d%20models/aproyaloakdemo3d/audemars-piguet-royal-oak-tourbillon/source/waxxtch.glb"></script>
+    <script type="module" src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/3d%20models/aproyaloakdemo3d/audemars-piguet-royal-oak-tourbillon/source/waxxtch.glb">
+        document.querySelector('.model-strip-viewer')
+  ?.addEventListener('error', (e) => {
+    console.error('Model load failed:', e.detail?.type, e.detail?.sourceError);
+  });
+    </script>
     <style>
         /* ═══════════════════════════════════════════
            TOKENS & RESET
@@ -978,43 +983,11 @@
    TRUST STRIP
 ═══════════════════════════════════════════ */
 
-.trust-strip {
-    width: 100%;
-
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-
-    background: var(--deep);
-
-    border-top: 1px solid rgba(201, 168, 76, 0.18);
-    border-bottom: 1px solid rgba(201, 168, 76, 0.18);
-}
-
-.trust-item {
-    min-height: 105px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    gap: 0.9rem;
-
-    padding: 1.2rem 1rem;
-
-    border-right: 1px solid rgba(201, 168, 76, 0.12);
-}
-
 .trust-item:last-child {
     border-right: none;
 }
 
-.trust-icon {
-    font-family: var(--font-serif);
-    font-size: 1.35rem;
-    color: var(--gold);
 
-    flex-shrink: 0;
-}
 
 .trust-item div {
     display: flex;
@@ -1072,54 +1045,116 @@
     grid-template-columns: 1fr;
 }
 
-.trust-item {
-    justify-content: flex-start;
-    padding: 1rem 1.5rem;
+/* ═══════════════════════════════════════════
+   TRUST STRIP
+═══════════════════════════════════════════ */
+.trust-strip {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    background: var(--deep);
+    border-top: 1px solid rgba(201, 168, 76, 0.18);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.18);
+}
 
-    border-right: none;
-    border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+.trust-item {
+    min-height: 105px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.9rem;
+    padding: 1.2rem 1rem;
+    border-right: 1px solid rgba(201, 168, 76, 0.12);
 }
 
 .trust-item:last-child {
-    border-bottom: none;
-}
-            .carousel-container {
-                max-width: 220px;
-            }
-            .watch-card {
-                padding: 1.5rem 1rem;
-                min-height: 400px;
-            }
-            .hero-title {
-                font-size: 2.2rem;
-            }
-            .hero-cta {
-                gap: 1rem;
-            }
-            .btn-primary,
-            .btn-ghost {
-                padding: 0.7rem 1.8rem;
-                font-size: 0.6rem;
-            }
-            .trust-strip {
-    grid-template-columns: repeat(2, 1fr);
-}
-
-.trust-item {
-    min-height: 90px;
-}
-
-.trust-item:nth-child(2),
-.trust-item:nth-child(4) {
     border-right: none;
 }
 
-.trust-item:nth-child(1),
-.trust-item:nth-child(2),
-.trust-item:nth-child(3) {
-    border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+.trust-icon {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    color: var(--gold);
+    flex-shrink: 0;
 }
-        }
+
+.trust-item div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.trust-item strong {
+    font-family: var(--font-display);
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    color: var(--ivory);
+    text-transform: uppercase;
+}
+
+.trust-item span:not(.trust-icon) {
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    line-height: 1.4;
+    color: var(--muted);
+}
+
+/* Tablet: 3 columns then 2 */
+@media (max-width: 1024px) {
+    .trust-strip {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .trust-item:nth-child(3n) {
+        border-right: none;
+    }
+    .trust-item:nth-child(1),
+    .trust-item:nth-child(2),
+    .trust-item:nth-child(3) {
+        border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+    }
+}
+
+/* Mobile: 2 columns */
+@media (max-width: 600px) {
+    .trust-strip {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .trust-item {
+        justify-content: flex-start;
+        min-height: 90px;
+        padding: 1rem 1.2rem;
+    }
+    .trust-item:nth-child(2n) {
+        border-right: none;
+    }
+    .trust-item:nth-child(3n) {
+        border-right: 1px solid rgba(201, 168, 76, 0.12);
+    }
+    .trust-item:nth-child(1),
+    .trust-item:nth-child(2),
+    .trust-item:nth-child(3),
+    .trust-item:nth-child(4) {
+        border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+    }
+    .trust-item:nth-child(5) {
+        grid-column: 1 / -1;
+        border-bottom: none;
+    }
+}
+
+/* Narrow mobile: stack */
+@media (max-width: 420px) {
+    .trust-strip {
+        grid-template-columns: 1fr;
+    }
+    .trust-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+    }
+    .trust-item:last-child {
+        border-bottom: none;
+    }
+}
 
         /* ═══════════════════════════════════════════
    3D MODEL STRIP — 1/4 viewport
@@ -1339,27 +1374,30 @@
 <section class="model-strip" id="showcase">
     <div class="model-strip-inner">
         <!-- ↓↓↓ REPLACE src WITH YOUR GLB FILE PATH ↓↓↓ -->
-        <model-viewer
-            class="model-strip-viewer"
-            src="YOUR_MODEL.glb"
-            alt="House of Swiss signature timepiece"
-            camera-controls
-            auto-rotate
-            auto-rotate-delay="400"
-            rotation-per-second="20deg"
-            shadow-intensity="1.2"
-            shadow-softness="0.9"
-            environment-image="neutral"
-            exposure="1.1"
-            camera-orbit="0deg 75deg 110%"
-            min-camera-orbit="auto auto 70%"
-            max-camera-orbit="auto auto 200%"
-            interaction-prompt="auto"
-        >
+     <model-viewer
+    class="model-strip-viewer"
+    src="YOUR_MODEL.glb"
+    alt="House of Swiss signature timepiece"
+    camera-controls
+    auto-rotate
+    auto-rotate-delay="400"
+    rotation-per-second="20deg"
+    shadow-intensity="1.2"
+    shadow-softness="0.9"
+    environment-image="neutral"
+    exposure="1.1"
+    camera-orbit="0deg 75deg 110%"
+    min-camera-orbit="auto auto 70%"
+    max-camera-orbit="auto auto 200%"
+    interaction-prompt="auto"
+    loading="eager"
+    reveal="auto"
+    crossorigin="anonymous"
+>
             <div slot="poster" class="model-strip-loader">
                 <span class="loader-ring"></span>
             </div>
-            <div slot="error" class="model-strip-error">
+            <div class="model-strip-error">
                 Unable to load 3D model.
             </div>
         </model-viewer>
