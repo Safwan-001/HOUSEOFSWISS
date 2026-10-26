@@ -12,6 +12,19 @@
   ?.addEventListener('error', (e) => {
     console.error('Model load failed:', e.detail?.type, e.detail?.sourceError);
   });
+
+        const mv = document.querySelector('model-viewer');
+if (mv) {
+    mv.addEventListener('error', (e) => {
+        console.error('🔴 MODEL-VIEWER ERROR:', e.detail);
+    });
+    mv.addEventListener('load', () => {
+        console.log('✅ MODEL-VIEWER LOADED');
+    });
+    mv.addEventListener('progress', (e) => {
+        console.log('📦 PROGRESS:', Math.round(e.detail.totalProgress * 100) + '%');
+    });
+}
     </script>
     <style>
         /* ═══════════════════════════════════════════
