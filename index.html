@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=Raleway:wght@200;300;400&display=swap" rel="stylesheet" />
+    <script type="module" src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/3d%20models/aproyaloakdemo3d/audemars-piguet-royal-oak-tourbillon/source/waxxtch.glb"></script>
     <style>
         /* ═══════════════════════════════════════════
            TOKENS & RESET
@@ -1119,6 +1120,127 @@
     border-bottom: 1px solid rgba(201, 168, 76, 0.12);
 }
         }
+
+        /* ═══════════════════════════════════════════
+   3D MODEL STRIP — 1/4 viewport
+═══════════════════════════════════════════ */
+.model-strip {
+    width: 100%;
+    height: 25vh;
+    min-height: 220px;
+    background: linear-gradient(180deg, var(--black) 0%, var(--deep) 100%);
+    border-top: 1px solid rgba(201, 168, 76, 0.15);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.model-strip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Radial glow behind model */
+.model-strip::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 140%;
+    background: radial-gradient(ellipse, rgba(201, 168, 76, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+    filter: blur(30px);
+}
+
+.model-strip-viewer {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    --poster-color: transparent;
+    --progress-bar-color: transparent;
+    outline: none;
+    z-index: 2;
+}
+
+.model-strip-text {
+    position: absolute;
+    left: 4rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    text-align: left;
+    pointer-events: none;
+}
+
+.model-strip-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 1.8vw, 1.6rem);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--ivory);
+    margin: 0.5rem 0 0.4rem;
+}
+
+.model-strip-sub {
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.model-strip-loader {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+}
+
+.loader-ring {
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(201, 168, 76, 0.15);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.model-strip-error {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-family: var(--font-body);
+}
+
+@media (max-width: 768px) {
+    .model-strip {
+        height: 28vh;
+        min-height: 200px;
+    }
+    .model-strip-text {
+        left: 1.5rem;
+    }
+    .model-strip-title {
+        font-size: 1rem;
+    }
+    .model-strip-sub {
+        font-size: 0.55rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -1209,6 +1331,45 @@
 
     </div>
 
+</section>
+
+    <!-- ═══════════════════════════════════════════
+     3D MODEL SHOWCASE — 1/4 viewport
+═══════════════════════════════════════════ -->
+<section class="model-strip" id="showcase">
+    <div class="model-strip-inner">
+        <!-- ↓↓↓ REPLACE src WITH YOUR GLB FILE PATH ↓↓↓ -->
+        <model-viewer
+            class="model-strip-viewer"
+            src="YOUR_MODEL.glb"
+            alt="House of Swiss signature timepiece"
+            camera-controls
+            auto-rotate
+            auto-rotate-delay="400"
+            rotation-per-second="20deg"
+            shadow-intensity="1.2"
+            shadow-softness="0.9"
+            environment-image="neutral"
+            exposure="1.1"
+            camera-orbit="0deg 75deg 110%"
+            min-camera-orbit="auto auto 70%"
+            max-camera-orbit="auto auto 200%"
+            interaction-prompt="auto"
+        >
+            <div slot="poster" class="model-strip-loader">
+                <span class="loader-ring"></span>
+            </div>
+            <div slot="error" class="model-strip-error">
+                Unable to load 3D model.
+            </div>
+        </model-viewer>
+
+        <div class="model-strip-text">
+            <span class="label">Interactive</span>
+            <h2 class="model-strip-title">Explore the Calibre</h2>
+            <p class="model-strip-sub">Drag to rotate · Scroll to zoom</p>
+        </div>
+    </div>
 </section>
 
 <!-- TRUST STRIP -->
