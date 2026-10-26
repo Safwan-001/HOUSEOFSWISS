@@ -13,18 +13,7 @@
     console.error('Model load failed:', e.detail?.type, e.detail?.sourceError);
   });
 
-        const mv = document.querySelector('model-viewer');
-if (mv) {
-    mv.addEventListener('error', (e) => {
-        console.error('🔴 MODEL-VIEWER ERROR:', e.detail);
-    });
-    mv.addEventListener('load', () => {
-        console.log('✅ MODEL-VIEWER LOADED');
-    });
-    mv.addEventListener('progress', (e) => {
-        console.log('📦 PROGRESS:', Math.round(e.detail.totalProgress * 100) + '%');
-    });
-}
+
     </script>
     <style>
         /* ═══════════════════════════════════════════
@@ -1054,12 +1043,12 @@ if (mv) {
         }
 
         @media (max-width: 480px) {
-            .trust-strip {
-    grid-template-columns: 1fr;
+          
 }
 
+
 /* ═══════════════════════════════════════════
-   TRUST STRIP
+   TRUST STRIP — root level, all screens
 ═══════════════════════════════════════════ */
 .trust-strip {
     width: 100%;
@@ -1095,6 +1084,7 @@ if (mv) {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+    text-align: left;
 }
 
 .trust-item strong {
@@ -1112,14 +1102,10 @@ if (mv) {
     color: var(--muted);
 }
 
-/* Tablet: 3 columns then 2 */
+/* Tablet: 3 columns */
 @media (max-width: 1024px) {
-    .trust-strip {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    .trust-item:nth-child(3n) {
-        border-right: none;
-    }
+    .trust-strip { grid-template-columns: repeat(3, 1fr); }
+    .trust-item:nth-child(3n) { border-right: none; }
     .trust-item:nth-child(1),
     .trust-item:nth-child(2),
     .trust-item:nth-child(3) {
@@ -1127,22 +1113,16 @@ if (mv) {
     }
 }
 
-/* Mobile: 2 columns */
+/* Mobile: 2 columns, then last item spans full width */
 @media (max-width: 600px) {
-    .trust-strip {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    .trust-strip { grid-template-columns: repeat(2, 1fr); }
     .trust-item {
         justify-content: flex-start;
         min-height: 90px;
         padding: 1rem 1.2rem;
     }
-    .trust-item:nth-child(2n) {
-        border-right: none;
-    }
-    .trust-item:nth-child(3n) {
-        border-right: 1px solid rgba(201, 168, 76, 0.12);
-    }
+    .trust-item:nth-child(2n) { border-right: none; }
+    .trust-item:nth-child(3n) { border-right: 1px solid rgba(201, 168, 76, 0.12); }
     .trust-item:nth-child(1),
     .trust-item:nth-child(2),
     .trust-item:nth-child(3),
@@ -1155,32 +1135,28 @@ if (mv) {
     }
 }
 
-/* Narrow mobile: stack */
+/* Narrow phones: stack single column */
 @media (max-width: 420px) {
-    .trust-strip {
-        grid-template-columns: 1fr;
-    }
-    .trust-item {
-        border-right: none;
-        border-bottom: 1px solid rgba(201, 168, 76, 0.12);
-    }
-    .trust-item:last-child {
-        border-bottom: none;
-    }
+    .trust-strip { grid-template-columns: 1fr; }
+    .trust-item { border-right: none; border-bottom: 1px solid rgba(201, 168, 76, 0.12); }
+    .trust-item:last-child { border-bottom: none; }
 }
 
         /* ═══════════════════════════════════════════
    3D MODEL STRIP — 1/4 viewport
 ═══════════════════════════════════════════ */
 .model-strip {
-    width: 100%;
-    height: 25vh;
-    min-height: 220px;
+ width: 100%;
+    height: calc(100svh - 80px);   /* fills viewport below navbar */
+    min-height: 600px;
     background: linear-gradient(180deg, var(--black) 0%, var(--deep) 100%);
     border-top: 1px solid rgba(201, 168, 76, 0.15);
     border-bottom: 1px solid rgba(201, 168, 76, 0.15);
     position: relative;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .model-strip-inner {
@@ -1387,10 +1363,9 @@ if (mv) {
 <section class="model-strip" id="showcase">
     <div class="model-strip-inner">
         <!-- ↓↓↓ REPLACE src WITH YOUR GLB FILE PATH ↓↓↓ -->
-     <model-viewer
-        src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/3d%20models/aproyaloakdemo3d/audemars-piguet-royal-oak-tourbillon/source/waxxtch.glb"
+   <model-viewer
     class="model-strip-viewer"
-    src="YOUR_MODEL.glb"
+    src="https://pub-3963f47777f24b4992f4f5467157b68c.r2.dev/3d%20models/aproyaloakdemo3d/audemars-piguet-royal-oak-tourbillon/source/waxxtch.glb"
     alt="House of Swiss signature timepiece"
     camera-controls
     auto-rotate
@@ -1400,20 +1375,18 @@ if (mv) {
     shadow-softness="0.9"
     environment-image="neutral"
     exposure="1.1"
-    camera-orbit="0deg 75deg 110%"
-    min-camera-orbit="auto auto 70%"
+    camera-orbit="0deg 75deg 80%"
+    min-camera-orbit="auto auto 40%"
     max-camera-orbit="auto auto 200%"
-    interaction-prompt="auto"
+    field-of-view="25deg"
+    interaction-prompt="none"
     loading="eager"
     reveal="auto"
-    crossorigin="anonymous"
 >
             <div slot="poster" class="model-strip-loader">
                 <span class="loader-ring"></span>
             </div>
-            <div class="model-strip-error">
-                Unable to load 3D model.
-            </div>
+           
         </model-viewer>
 
         <div class="model-strip-text">
